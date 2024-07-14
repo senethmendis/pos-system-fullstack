@@ -1,4 +1,5 @@
-CREATE TABLE Customers (
+-- Check if Customers table exists
+CREATE TABLE IF NOT EXISTS Customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
@@ -8,7 +9,8 @@ CREATE TABLE Customers (
     registration_date DATE
 );
 
-CREATE TABLE Sales (
+-- Check if Sales table exists
+CREATE TABLE IF NOT EXISTS Sales (
     sale_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
     sale_date DATE,
@@ -19,7 +21,18 @@ CREATE TABLE Sales (
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
 
-CREATE TABLE Sales_Items (
+-- Check if Products table exists
+CREATE TABLE IF NOT EXISTS Products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(100),
+    category VARCHAR(50),
+    price DECIMAL(10, 2),
+    unit VARCHAR(20),
+    stock_quantity INT
+);
+
+-- Check if Sales_Items table exists
+CREATE TABLE IF NOT EXISTS Sales_Items (
     sale_item_id INT AUTO_INCREMENT PRIMARY KEY,
     sale_id INT,
     product_id INT,
@@ -30,16 +43,8 @@ CREATE TABLE Sales_Items (
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
-CREATE TABLE Products (
-    product_id INT AUTO_INCREMENT PRIMARY KEY,
-    product_name VARCHAR(100),
-    category VARCHAR(50),
-    price DECIMAL(10, 2),
-    unit VARCHAR(20),
-    stock_quantity INT
-);
-
-CREATE TABLE Inventory (
+-- Check if Inventory table exists
+CREATE TABLE IF NOT EXISTS Inventory (
     inventory_id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT,
     quantity_in INT,
@@ -49,7 +54,8 @@ CREATE TABLE Inventory (
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
-CREATE TABLE Reports (
+-- Check if Reports table exists
+CREATE TABLE IF NOT EXISTS Reports (
     report_id INT AUTO_INCREMENT PRIMARY KEY,
     report_type VARCHAR(20),
     total_sales DECIMAL(10, 2),
