@@ -2,10 +2,13 @@ import React from "react";
 import Button from "./Button";
 import { cart } from "../assets";
 
-const ProductCard = ({ image, title, price }) => {
+const ProductCard = ({ image, title, price, onClick }) => {
   return (
     // add height
-    <div className="bg-white w-full h-[200px] border rounded-lg flex flex-col  items-center hover:scale-105 transition-all duration-150">
+    <div
+      onClick={onClick}
+      className="bg-white w-full h-[200px] border rounded-lg flex flex-col  items-center hover:scale-105 transition-all duration-150"
+    >
       <div className="w-full h-1/2">
         <img
           src={image}

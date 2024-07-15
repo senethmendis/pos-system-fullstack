@@ -74,16 +74,6 @@ export const DummySalesRow = [
     productName: "Product 3",
     Price: "350",
   },
-  {
-    productId: 4,
-    productName: "Product 4",
-    Price: "180",
-  },
-  {
-    productId: 5,
-    productName: "Product 4",
-    Price: "180",
-  },
 ];
 
 export const DummyProductData = [

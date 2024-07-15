@@ -1,6 +1,7 @@
 import React from "react";
 
 const Button = ({
+  onClick,
   text,
   icon,
   isIcon,
@@ -12,6 +13,7 @@ const Button = ({
 }) => {
   return (
     <button
+      onClick={onClick}
       className={`${customSytles} ${width} ${color} flex flex-row justify-center items-center max-w-[200px] text-black p-2  rounded-md font-normal  gap-2 `}
     >
       {isIcon && (
