@@ -61,7 +61,7 @@ const HomePage = () => {
                 key={i}
                 title={product.title}
                 image={product.image}
-                price={product.Price}
+                price={product.price}
                 onClick={() => {
                   setSales([
                     ...sales,
