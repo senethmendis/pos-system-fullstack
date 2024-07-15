@@ -22,9 +22,8 @@ const HeaderBar = () => {
         </div>
 
         <Button
-          customSytles=""
+          customSytles="bg-orange-500 text-white"
           text="Check Stats"
-          color="bg-primary-light-green"
           width={"w-[150px]"}
         />
       </div>

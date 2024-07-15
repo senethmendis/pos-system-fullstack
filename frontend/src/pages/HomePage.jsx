@@ -41,11 +41,12 @@ const HomePage = () => {
             isIcon
             text={"Add Customer"}
             color={"bg-gray-200"}
+            customSytles={"text-white"}
           />
         </div>
         {/* cart items */}
         <div className="w-full h-full py-4 px-2">
-          <div className="w-full h-full max-h-[430px] overflow-y-scroll overflow-x-hidden   flex flex-col gap-2">
+          <div className="w-full h-[430px] overflow-y-scroll overflow-x-hidden  no-scrollbar  flex flex-col gap-2">
             {DummySalesRow.map((product, i) => (
               <CartItemRow
                 key={i}
@@ -57,23 +58,15 @@ const HomePage = () => {
           </div>
           {/* card bottom part start */}
           <div className="w-full h-full flex flex-col">
-            <div className="py-1 flex flex-row justify-between items-center bg-orange-100 rounded-md mt-2">
+            <div className="py-1 flex flex-row justify-between items-center bg-orange-100 rounded-md mt-2 px-2">
               <Button
                 text="Add"
                 isBackground={false}
-                customSytles={"text-black font-semibold"}
+                customSytles="text-black font-semibold"
               />
-              <div className="flex flex-row items-center gap-2">
-                <Button
-                  text="Discount"
-                  isBackground={false}
-                  customSytles={"text-orange-400 font-semibold"}
-                />
-                <Button
-                  text="Coupon Code"
-                  isBackground={false}
-                  customSytles={"text-orange-400 font-semibold"}
-                />
+              <div className="flex flex-row items-center gap-8">
+                <p className="text-orange-400 text-[14px]">Discount</p>
+                <p className="text-orange-400 text-[14px]">Coupen Code</p>
               </div>
             </div>
             <div className=" w-full h-full py-3">
@@ -92,8 +85,19 @@ const HomePage = () => {
                 </div>
               </div>
               <div className="w-full flex flex-row gap-2 py-5">
-                <Button text="Print" color="bg-orange-400" width="w-full" />
-                <Button text="Print" color="bg-orange-400" width="w-full" />
+                <Button
+                  text="Print"
+                  color="bg-orange-400"
+                  width="w-full"
+                  isBackground={true}
+                  customSytles={"text-white"}
+                />
+                <Button
+                  text="Process"
+                  width="w-full"
+                  color="bg-primary-light-green"
+                  customSytles={"text-white"}
+                />
               </div>
             </div>
           </div>
