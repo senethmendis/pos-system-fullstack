@@ -98,13 +98,7 @@ const HomePage = () => {
       {/* right side cart item and total cal */}
       <div className="w-1/2 h-full bg-white">
         <div className="w-full border-l border-b border-gray-100 p-2 flex justify-between">
-          <Button
-            icon={plus}
-            isIcon
-            text={"Add Customer"}
-            color={"bg-parimary-gray"}
-            customSytles={"text-black"}
-          />
+          <h1>Invoice #0001</h1>
         </div>
         {/* cart items */}
         <div className="w-full h-full py-4 px-2">
