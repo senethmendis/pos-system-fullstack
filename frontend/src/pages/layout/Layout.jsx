@@ -5,12 +5,13 @@ import Navbar from "../../components/Navbar";
 
 const Layout = () => {
   return (
-    <main>
-      <div className="max-w-[1000px] h-screen mx-auto py-10">
-        <div className="w-full h-full rounded-3xl bg-parimary-gray shadow-2xl border">
-          <HeaderBar />
-          <Navbar />
+    <main className="max-w-[1260px] h-full  my-auto  mx-auto py-5">
+      <div className="w-full h-full flex flex-col   shadow-2xl border py-4">
+        {/* includes search bar */}
+        <HeaderBar />
 
+        <div className="h-full flex flex-row ">
+          <Navbar />
           <Outlet />
         </div>
       </div>

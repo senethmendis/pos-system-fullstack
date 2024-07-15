@@ -1,11 +1,20 @@
 import React from "react";
 
-const Button = ({ text, icon, isIcon, color }) => {
+const Button = ({
+  text,
+  icon,
+  isIcon,
+  color,
+  customSytles,
+  width,
+  isText = true,
+}) => {
   return (
     <button
-      className={`bg-green-600 text-white px-3 py-2 rounded-md font-normal flex items-center flex-row gap-2 ${color}`}
+      className={`${customSytles} ${width} hover:bg-gray-300  max-w-[200px] bg-green-600 text-white p-2 justify-center  rounded-md font-normal flex items-center flex-row gap-2 ${color}`}
     >
-      {isIcon && <img src={icon} alt="icon" className="w-5 invert" />} {text}
+      {isIcon && <img src={icon} alt="icon" className="w-[15px] invert" />}
+      {isText && <p className="w-full text-[12px]">{text}</p>}
     </button>
   );
 };
