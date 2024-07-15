@@ -31,8 +31,8 @@ const HomePage = () => {
 
   useEffect(() => {
     const total = sales.reduce(
-      (sum, product) => sum + parseInt(product.Price, 10) * 2,
-      10
+      (sum, product) => sum + parseInt(product.Price, 0),
+      0
     );
     setTotalAmount(total);
   }, [sales]);
@@ -100,7 +100,7 @@ const HomePage = () => {
                 id={product.productId}
                 title={product.productName}
                 price={product.Price}
-                getQty={0}
+                getQty={1}
                 onClickRemove={() => {
                   setSales(
                     sales.filter((s) => s.productId !== product.productId)

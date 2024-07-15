@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { cancel } from "../assets";
 
-const CartItemRow = ({ title, price, id, count, onClickRemove }) => {
-  const [Qty, setQty] = useState(count);
+const CartItemRow = ({ title, price, id, count, onClickRemove, getQty }) => {
+  const [Qty, setQty] = useState(getQty);
 
   const handleQtyChange = (e) => {
     const value = parseInt(e.target.value, 10);
