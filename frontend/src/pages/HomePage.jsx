@@ -23,15 +23,31 @@ let DummySalesRow = [
   },
 ];
 
+const discountCodes = [
+  {
+    code: "DISCOUNT10",
+    discount: 10,
+  },
+  {
+    code: "DISCOUNT100",
+    discount: 100,
+  },
+  {
+    code: "DISCOUNT1000",
+    discount: 1000,
+  },
+];
+
 const HomePage = () => {
   const [filter, setFilter] = useState("all");
   const [toggleDiscount, setToggleDiscount] = useState(false);
   const [sales, setSales] = useState(DummySalesRow);
   const [totalAmount, setTotalAmount] = useState(0.0);
+  const [discountAmount, setDiscountAmount] = useState(0);
 
   useEffect(() => {
     const total = sales.reduce(
-      (sum, product) => sum + parseInt(product.Price, 0),
+      (sum, product) => sum + parseInt(product.Price, 0) - discountAmount,
       0
     );
     setTotalAmount(total);
@@ -123,6 +139,8 @@ const HomePage = () => {
                   <input
                     type="text"
                     className="w-full h-full px-1 outline-none text-[12px] py-1 rounded-sm"
+                    value={discountAmount}
+                    onChange={(e) => setDiscountAmount(e.target.value)}
                   />
                 ) : (
                   <>
@@ -139,8 +157,14 @@ const HomePage = () => {
                   <strong className="text-[12px]">200.00</strong>
                 </div>
                 <div className="flex flex-row justify-between">
-                  <p>Tax</p>
-                  <strong className="text-[12px]">200.00</strong>
+                  <p>Discount</p>
+                  <strong
+                    className={`text-[12px] ${
+                      discountAmount > 0 ? "text-red-600" : ""
+                    }`}
+                  >
+                    {discountAmount === 0 ? 0 : `-${discountAmount}`}
+                  </strong>
                 </div>
                 <div className="flex flex-row justify-between">
                   <strong>Payable Amount</strong>
