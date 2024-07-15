@@ -19,7 +19,7 @@ import {
 
 export const NavbarItems = [
   {
-    link: "/home",
+    link: "/",
     icon: homeicon,
     title: "Home",
   },
@@ -47,6 +47,65 @@ export const subFilters = [
   "supper",
   "dessert",
 ];
+
+export const DummySalesRow = [
+  {
+    productId: 1,
+    productName: "Product 1",
+    Price: "240",
+  },
+  {
+    productId: 2,
+    productName: "Product 2",
+    Price: "150",
+  },
+  {
+    productId: 3,
+    productName: "Product 3",
+    Price: "350",
+  },
+  {
+    productId: 4,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+  {
+    productId: 5,
+    productName: "Product 4",
+    Price: "180",
+  },
+];
+
 export const DummyProductData = [
   {
     id: 1,

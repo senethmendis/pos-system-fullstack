@@ -1,8 +1,9 @@
 import React from "react";
-import { DummyProductData, subFilters } from "../constants";
+import { DummyProductData, DummySalesRow, subFilters } from "../constants";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
 import { plus } from "../assets";
+import CartItemRow from "../components/CartItemRow";
 
 const HomePage = () => {
   return (
@@ -22,17 +23,19 @@ const HomePage = () => {
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
             {DummyProductData.map((product, i) => (
               <ProductCard
+                key={i}
                 title={product.title}
                 image={product.image}
                 price={product.Price}
-                key={i}
               />
             ))}
           </div>
         </div>
       </div>
+
+      {/* right side cart item and total cal */}
       <div className="w-1/2 h-full bg-white">
-        <div className="w-full border-l border-gray-100 p-2 flex justify-between">
+        <div className="w-full border-l border-b border-gray-100 p-2 flex justify-between">
           <Button
             icon={plus}
             isIcon
@@ -41,14 +44,64 @@ const HomePage = () => {
           />
         </div>
         {/* cart items */}
-        <div></div>
+        <div className="w-full h-full py-4 px-2">
+          <div className="w-full h-full max-h-[430px] overflow-y-scroll overflow-x-hidden   flex flex-col gap-2">
+            {DummySalesRow.map((product, i) => (
+              <CartItemRow
+                key={i}
+                id={product.productId}
+                title={product.productName}
+                price={product.Price}
+              />
+            ))}
+          </div>
+          {/* card bottom part start */}
+          <div className="w-full h-full flex flex-col">
+            <div className="py-1 flex flex-row justify-between items-center bg-orange-100 rounded-md mt-2">
+              <Button
+                text="Add"
+                isBackground={false}
+                customSytles={"text-black font-semibold"}
+              />
+              <div className="flex flex-row items-center gap-2">
+                <Button
+                  text="Discount"
+                  isBackground={false}
+                  customSytles={"text-orange-400 font-semibold"}
+                />
+                <Button
+                  text="Coupon Code"
+                  isBackground={false}
+                  customSytles={"text-orange-400 font-semibold"}
+                />
+              </div>
+            </div>
+            <div className=" w-full h-full py-3">
+              <div className="w-full h-full flex flex-col">
+                <div className="flex flex-row justify-between">
+                  <p>Subtotal</p>
+                  <strong className="text-[12px]">200.00</strong>
+                </div>
+                <div className="flex flex-row justify-between">
+                  <p>Tax</p>
+                  <strong className="text-[12px]">200.00</strong>
+                </div>
+                <div className="flex flex-row justify-between">
+                  <strong>Payable Amount</strong>
+                  <strong>200.00</strong>
+                </div>
+              </div>
+              <div className="w-full flex flex-row gap-2 py-5">
+                <Button text="Print" color="bg-orange-400" width="w-full" />
+                <Button text="Print" color="bg-orange-400" width="w-full" />
+              </div>
+            </div>
+          </div>
+          {/* card bottom part  end*/}
+        </div>
       </div>
     </section>
   );
 };
 
 export default HomePage;
-
-export const CartItemRow = () => {
-  return <div>test row</div>;
-};
