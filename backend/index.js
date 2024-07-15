@@ -9,6 +9,8 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
+
+//daejdada/a weaea
 mongoose
   .connect(
     "mongodb+srv://axanta7:wolfy4556@pos-sys.c3kiihx.mongodb.net/?retryWrites=true&w=majority&appName=pos-sys"
