@@ -1,7 +1,4 @@
 import React from "react";
-import { CustomerTableColumns } from "../constants/index";
-import Button from "../components/Button";
-import { bin, edit } from "../assets";
 
 const CustomerPage = () => {
   return (
