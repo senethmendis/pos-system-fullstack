@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import OrdersPage from "./pages/OrdersPage";
-import Layout from "./pages/Layout";
+import Layout from "./pages/layout/Layout";
 
 function App() {
   return (
