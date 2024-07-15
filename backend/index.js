@@ -1,30 +1,23 @@
-import express from "express";
-import mysql from "mysql";
-import cors from "cors";
-const port = 8080;
-const app = express();
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "",
-});
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
 
-db.connect((error) => {
-  if (error) {
-    console.error("Error conneting to db", error);
-    return;
-  }
-  console.log("Connection Successs!");
-});
+const app = express();
+const port = 8080;
 
 app.use(express.json());
 app.use(cors());
 
-app.get("/helloworld", (req, res) => {
-  res.json("Hello Test !");
+// Connect to MongoDB
+mongoose
+  .connect(
+    "mongodb+srv://axanta7:wolfy4556@pos-sys.c3kiihx.mongodb.net/?retryWrites=true&w=majority&appName=pos-sys"
+  )
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.log(err));
+
+app.get("/test", async (req, res) => {
+  res.json("Hello Test");
 });
 
-app.listen(port, () => {
-  console.log(`backned server is ruinng on ${port}!`);
-});
+app.listen(port, () => console.log("Server started on port " + port));
