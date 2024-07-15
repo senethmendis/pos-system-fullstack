@@ -1,6 +1,9 @@
 # FullStack POS System Node.js & React
 ![dp](https://github.com/senethmendis/pos-system-fullstack/blob/main/ss.png)
 
+### Collabarating with
+[@MalithaSupun](https://github.com/MalithaSupun)
+
 ### Built With
 
  frameworks/libraries used for theproject..
