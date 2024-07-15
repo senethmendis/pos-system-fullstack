@@ -8,12 +8,19 @@ const Button = ({
   width,
   isText = true,
   color,
+  invertIcon,
 }) => {
   return (
     <button
-      className={`${customSytles} ${width} ${color}   max-w-[200px] text-black p-2 justify-center  rounded-md font-normal flex items-center flex-row gap-2 `}
+      className={`${customSytles} ${width} ${color} flex flex-row justify-center items-center max-w-[200px] text-black p-2  rounded-md font-normal  gap-2 `}
     >
-      {isIcon && <img src={icon} alt="icon" className="w-[15px] invert" />}
+      {isIcon && (
+        <img
+          src={icon}
+          alt="icon"
+          className={`w-[15px] ${invertIcon && "invert"}`}
+        />
+      )}
       {isText && <p className="w-full text-[12px] font-medium">{text}</p>}
     </button>
   );

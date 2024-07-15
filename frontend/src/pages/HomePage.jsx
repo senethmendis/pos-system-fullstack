@@ -2,7 +2,7 @@ import React from "react";
 import { DummyProductData, DummySalesRow, subFilters } from "../constants";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import { plus } from "../assets";
+import { plus, reporticon } from "../assets";
 import CartItemRow from "../components/CartItemRow";
 
 const HomePage = () => {
@@ -40,8 +40,8 @@ const HomePage = () => {
             icon={plus}
             isIcon
             text={"Add Customer"}
-            color={"bg-gray-200"}
-            customSytles={"text-white"}
+            color={"bg-parimary-gray"}
+            customSytles={"text-black"}
           />
         </div>
         {/* cart items */}
@@ -91,6 +91,8 @@ const HomePage = () => {
                   width="w-full"
                   isBackground={true}
                   customSytles={"text-white"}
+                  isIcon
+                  icon={reporticon}
                 />
                 <Button
                   text="Process"

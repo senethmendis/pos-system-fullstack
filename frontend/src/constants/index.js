@@ -40,6 +40,15 @@ export const NavbarItems = [
   },
 ];
 
+export const CustomerTableColumns = [
+  "CID",
+  "Name",
+  "Email",
+  "Status",
+  "Edit",
+  "Delete",
+];
+
 export const subFilters = [
   "starters",
   "breakfast",

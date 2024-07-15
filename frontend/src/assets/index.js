@@ -8,6 +8,8 @@ import homeicon from "./icons/home.png";
 import reporticon from "./icons/profit-report.png";
 import salesicon from "./icons/sale-tag.png";
 import plus from "./icons/plus.png";
+import edit from "./icons/edit.png";
+import bin from "./icons/bin.png";
 
 export {
   cancel,
@@ -20,4 +22,6 @@ export {
   reporticon,
   salesicon,
   plus,
+  edit,
+  bin,
 };
