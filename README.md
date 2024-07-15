@@ -2,7 +2,7 @@
 ![dp](https://github.com/senethmendis/pos-system-fullstack/blob/main/ss.png)
 
 ### Collabarating with
-[@MalithaSupun](https://github.com/MalithaSupun)
+🔥 [@MalithaSupun](https://github.com/MalithaSupun)
 
 ### Built With
 
