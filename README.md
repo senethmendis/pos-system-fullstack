@@ -50,3 +50,10 @@ _installing and setting up your app._
    npm run dev
    ```
 
+![](my_video.mov)
+
+
+<video width="320" height="240" controls>
+  <source src="video.mov" type="video/mp4">
+</video>
+
