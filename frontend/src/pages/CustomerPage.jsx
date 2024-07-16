@@ -21,14 +21,14 @@ const customers = [
 const CustomerPage = () => {
   return (
     <section className="w-full h-full flex flex-row bg-parimary-gray">
-      <div className="w-full h-full flex flex-col p-3">
+      <div className="w-full h-[700px] flex flex-col p-3">
         <div className="flex justify-between items-center py-5">
           <h1 className="text-xl font-semibold">Customer Manager</h1>
           <button className="px-3 py-1 bg-green-500 text-white rounded">
             Add Customer
           </button>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-y-scroll">
           <table className="min-w-full bg-white border border-gray-200">
             <thead>
               <tr>
