@@ -1,5 +1,3 @@
-import React from "react";
-
 const CustomerPage = () => {
   return (
     <section className="w-full h-full flex flex-row bg-parimary-gray">
