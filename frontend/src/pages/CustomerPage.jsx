@@ -1,28 +1,6 @@
-<<<<<<< HEAD
-
-
 import React from "react";
 
-const customers = [
-  {
-    name: "Ramisa Sanjana",
-    email: "ramisa@gmail.com",
-    location: "14 Clifton Down Road, UK",
-    orders: 7,
-    spent: "$3331.00",
-  },
-  {
-    name: "Mohua Amin",
-    email: "mohua@gmail.com",
-    location: "405 Kings Road, Chelsea, London",
-    orders: 44,
-    spent: "$74,331.00",
-  },
-  // Add other customer data here
-];
-=======
 import { customers } from "../constants";
->>>>>>> a18f8fd61c7da2f026e20eb8a2cccc411ae9373a
 
 const CustomerPage = () => {
   return (
