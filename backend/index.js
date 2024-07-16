@@ -10,11 +10,10 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
+// test push and pill
 const mongoDBURI = process.env.MONGODB_URI;
 mongoose
-  .connect(
-    mongoDBURI
-  )
+  .connect(mongoDBURI)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
