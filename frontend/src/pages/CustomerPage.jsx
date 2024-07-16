@@ -1,34 +1,16 @@
-import React from "react";
-
-const customers = [
-  {
-    name: "Ramisa Sanjana",
-    email: "ramisa@gmail.com",
-    location: "14 Clifton Down Road, UK",
-    orders: 7,
-    spent: "$3331.00",
-  },
-  {
-    name: "Mohua Amin",
-    email: "mohua@gmail.com",
-    location: "405 Kings Road, Chelsea, London",
-    orders: 44,
-    spent: "$74,331.00",
-  },
-  // Add other customer data here
-];
+import { customers } from "../constants";
 
 const CustomerPage = () => {
   return (
     <section className="w-full h-full flex flex-row bg-parimary-gray">
-      <div className="w-full h-full flex flex-col p-3">
+      <div className="w-full h-[700px] flex flex-col p-3">
         <div className="flex justify-between items-center py-5">
           <h1 className="text-xl font-semibold">Customer Manager</h1>
           <button className="px-3 py-1 bg-green-500 text-white rounded">
             Add Customer
           </button>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-y-scroll">
           <table className="min-w-full bg-white border border-gray-200">
             <thead>
               <tr>
@@ -42,7 +24,7 @@ const CustomerPage = () => {
             </thead>
             <tbody>
               {customers.map((customer, index) => (
-                <tr key={index}>
+                <tr key={index} className="hover:bg-gray-200 cursor-pointer">
                   <td className="px-4 py-2 border-b flex items-center">
                     <img
                       src={`https://i.pravatar.cc/150?img=${index + 1}`}
