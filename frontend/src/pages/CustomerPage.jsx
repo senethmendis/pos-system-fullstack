@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 import React from "react";
@@ -19,6 +20,9 @@ const customers = [
   },
   // Add other customer data here
 ];
+=======
+import { customers } from "../constants";
+>>>>>>> a18f8fd61c7da2f026e20eb8a2cccc411ae9373a
 
 const CustomerPage = () => {
   return (
@@ -44,7 +48,7 @@ const CustomerPage = () => {
             </thead>
             <tbody>
               {customers.map((customer, index) => (
-                <tr key={index}>
+                <tr key={index} className="hover:bg-gray-200 cursor-pointer">
                   <td className="px-4 py-2 border-b flex items-center">
                     <img
                       src={`https://i.pravatar.cc/150?img=${index + 1}`}
