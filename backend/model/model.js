@@ -54,10 +54,4 @@ const Product = mongoose.model("Product", productSchema);
 const Inventory = mongoose.model("Inventory", inventorySchema);
 const Report = mongoose.model("Report", reportSchema);
 
-module.exports = {
-  Customer,
-  Sale,
-  Product,
-  Inventory,
-  Report,
-};
+export { Customer, Sale, Product, Inventory, Report };
