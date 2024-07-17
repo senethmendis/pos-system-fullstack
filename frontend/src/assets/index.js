@@ -10,6 +10,9 @@ import salesicon from "./icons/sale-tag.png";
 import plus from "./icons/plus.png";
 import edit from "./icons/edit.png";
 import bin from "./icons/bin.png";
+import stock from "./icons/stock.png";
+import refresh from "./icons/refresh.png";
+import testImage from "./icons/image.png";
 
 export {
   cancel,
@@ -24,4 +27,7 @@ export {
   plus,
   edit,
   bin,
+  stock,
+  refresh,
+  testImage,
 };

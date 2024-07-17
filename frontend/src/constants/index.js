@@ -1,4 +1,10 @@
-import { homeicon, usericon, salesicon, reporticon } from "../assets/index";
+import {
+  homeicon,
+  usericon,
+  salesicon,
+  reporticon,
+  stock,
+} from "../assets/index";
 import {
   apple,
   banana,
@@ -32,6 +38,11 @@ export const NavbarItems = [
     link: "/sales",
     icon: salesicon,
     title: "Sales",
+  },
+  {
+    link: "/inventory",
+    icon: stock,
+    title: "Inventory",
   },
   {
     link: "/reports",

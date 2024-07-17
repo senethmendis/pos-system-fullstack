@@ -1,3 +1,5 @@
+/////////////////////////////////////////////////////
+
 const seedDatabase = async () => {
   try {
     // Customers
@@ -53,6 +55,7 @@ const seedDatabase = async () => {
         price: 100,
         unit: "pcs",
         stock_quantity: 50,
+        imgUrl: "https://example.com/productA.jpg",
       },
       {
         product_name: "Product B",
@@ -60,6 +63,7 @@ const seedDatabase = async () => {
         price: 200,
         unit: "pcs",
         stock_quantity: 30,
+        imgUrl: "https://example.com/productB.jpg",
       },
       {
         product_name: "Product C",
@@ -67,6 +71,7 @@ const seedDatabase = async () => {
         price: 150,
         unit: "pcs",
         stock_quantity: 40,
+        imgUrl: "https://example.com/productC.jpg",
       },
       {
         product_name: "Product D",
@@ -74,6 +79,7 @@ const seedDatabase = async () => {
         price: 250,
         unit: "pcs",
         stock_quantity: 20,
+        imgUrl: "https://example.com/productD.jpg",
       },
       {
         product_name: "Product E",
@@ -81,6 +87,7 @@ const seedDatabase = async () => {
         price: 300,
         unit: "pcs",
         stock_quantity: 10,
+        imgUrl: "https://example.com/productE.jpg",
       },
     ];
 
@@ -201,3 +208,5 @@ const seedDatabase = async () => {
 };
 
 seedDatabase();
+
+/////////////////////////////////////////////////////

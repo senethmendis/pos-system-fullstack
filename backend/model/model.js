@@ -27,6 +27,7 @@ const productSchema = new Schema({
   category: { type: String },
   price: { type: Number, required: true },
   unit: { type: String },
+  imgUrl: { type: String },
   stock_quantity: { type: Number, default: 0 },
 });
 
