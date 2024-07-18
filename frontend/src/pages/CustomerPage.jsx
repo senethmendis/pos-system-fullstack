@@ -1,8 +1,4 @@
-
 import React from "react";
-
-
-
 import { customers } from "../constants";
 
 const CustomerPage = () => {
