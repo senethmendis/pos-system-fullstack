@@ -38,6 +38,15 @@ app.get("/test", (req, res) => {
 });
 
 // Get all customers
+app.get("/dash", async (req, res) => {
+  try {
+    res.json("Dashboard Data ? ");
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving customers", error });
+  }
+});
+
+// Get all customers
 app.get("/customers", async (req, res) => {
   try {
     const customers = await Customer.find();
