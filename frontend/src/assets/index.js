@@ -13,6 +13,7 @@ import bin from "./icons/bin.png";
 import stock from "./icons/stock.png";
 import refresh from "./icons/refresh.png";
 import testImage from "./icons/image.png";
+import dashboard from "./icons/dashboard.png";
 
 export {
   cancel,
@@ -30,4 +31,5 @@ export {
   stock,
   refresh,
   testImage,
+  dashboard,
 };
