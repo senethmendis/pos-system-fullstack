@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { DummyProductData, subFilters } from "../constants";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import { plus, reporticon } from "../assets";
+import { reporticon } from "../assets";
 import CartItemRow from "../components/CartItemRow";
+import axios from "axios";
 
-let DummySalesRow = [
-  {
-    productId: 1,
-    productName: "Product 1",
-    Price: "240",
-  },
-  {
-    productId: 2,
-    productName: "Product 2",
-    Price: "150",
-  },
-  {
-    productId: 3,
-    productName: "Product 3",
-    Price: "350",
-  },
-];
+let DummySalesRow = [];
 
 const discountCodes = [
   {
@@ -44,14 +29,27 @@ const HomePage = () => {
   const [sales, setSales] = useState(DummySalesRow);
   const [totalAmount, setTotalAmount] = useState(0.0);
   const [discountAmount, setDiscountAmount] = useState(0);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    const fetchAllProducts = async () => {
+      try {
+        const res = await axios.get("http://localhost:8080/product");
+        setProducts(res.data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    fetchAllProducts();
+
     const total = sales.reduce(
       (sum, product) => sum + parseInt(product.Price, 0) - discountAmount,
       0
     );
     setTotalAmount(total);
   }, [sales]);
+
   return (
     <section className="w-full h-full flex flex-row bg-parimary-gray">
       <div className="w-full h-full p-3">
@@ -68,29 +66,31 @@ const HomePage = () => {
         </div>
         <div className="w-full">
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
-            {DummyProductData.filter((product) => {
-              return filter.toLowerCase() === "all"
-                ? product
-                : product.category.toLowerCase().includes(filter);
-            }).map((product, i) => (
-              <ProductCard
-                key={i}
-                title={product.title}
-                image={product.image}
-                price={product.price}
-                onClick={() => {
-                  setSales([
-                    ...sales,
-                    {
-                      productId: product.id,
-                      productName: product.title,
-                      Price: product.price,
-                    },
-                  ]);
-                  console.log(product);
-                }}
-              />
-            ))}
+            {products
+              .filter((product) => {
+                return filter.toLowerCase() === "all"
+                  ? product
+                  : product.category.toLowerCase().includes(filter);
+              })
+              .map((product) => (
+                <ProductCard
+                  key={product._id}
+                  title={product.product_name}
+                  image={product.image}
+                  price={product.price}
+                  onClick={() => {
+                    setSales([
+                      ...sales,
+                      {
+                        productId: product._id,
+                        productName: product.product_name,
+                        Price: product.price,
+                      },
+                    ]);
+                    console.log(product);
+                  }}
+                />
+              ))}
           </div>
         </div>
       </div>
