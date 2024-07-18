@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from 'axios'
 import { usericon } from "../assets";
+
 const CustomerPage = () => {
   const [customers, setCustomers] = useState([]);
 
