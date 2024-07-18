@@ -4,6 +4,7 @@ import {
   salesicon,
   reporticon,
   stock,
+  dashboard,
 } from "../assets/index";
 import {
   apple,
@@ -29,6 +30,7 @@ export const NavbarItems = [
     icon: homeicon,
     title: "Home",
   },
+
   {
     link: "/customer",
     icon: usericon,

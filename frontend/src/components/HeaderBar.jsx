@@ -1,11 +1,11 @@
-import React from "react";
 import Button from "./Button";
-import { play, search } from "../assets/index";
+import { dashboard, search } from "../assets/index";
+import { Link } from "react-router-dom";
 
 const HeaderBar = () => {
   return (
     <header className="w-full flex border-b-2 border-gray-200/20">
-      <div className="px-4 w-full flex flex-row justify-between pb-2">
+      <div className="px-4 w-full flex flex-row items-center gap-8 justify-between pb-2">
         <div className="w-full flex flex-row gap-9 items-center px-4">
           <h1 className="text-2xl font-bold">POS 24</h1>
           <div className="flex gap-2 items-center bg-white px-3 rounded-md border">
@@ -21,6 +21,9 @@ const HeaderBar = () => {
           </div>
         </div>
 
+        <Link to={"/dash"}>
+          <img src={dashboard} alt="" className="w-8 h-8" />
+        </Link>
         <Button
           customSytles="bg-orange-500 text-white"
           text="Check Stats"
