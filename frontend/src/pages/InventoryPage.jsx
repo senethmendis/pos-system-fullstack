@@ -79,7 +79,7 @@ const InventoryPage = () => {
               />
               <Button
                 icon={refresh}
-                isIcon={true}
+                isIcon
                 text="Update"
                 width="w-full"
                 invertIcon
