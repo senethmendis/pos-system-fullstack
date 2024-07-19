@@ -83,7 +83,7 @@ const InventoryPage = () => {
                 text="Update"
                 width="w-full"
                 invertIcon
-                customSytles="bg-orange-500 text-white font-semibold"
+                customSytles="bg-orange-400 text-white font-semibold"
               />
             </div>
           </form>
