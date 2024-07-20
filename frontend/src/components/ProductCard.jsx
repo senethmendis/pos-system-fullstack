@@ -9,7 +9,10 @@ const ProductCard = ({ image, title, price, onClick }) => {
     >
       <div className={`${image == "" ? "p-3 " : ""} w-full h-1/2`}>
         {image == "" ? (
-          <img src={testImage} className="w-[30px] h-[30px] object-cover " />
+          <div className="flex gap-3 items-center">
+            <img src={testImage} className="w-[30px] h-[30px] object-cover " />{" "}
+            <p className="text-[10px]">No Product Image</p>
+          </div>
         ) : (
           <img
             src={image}

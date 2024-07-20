@@ -76,7 +76,7 @@ const HomePage = () => {
                 <ProductCard
                   key={product._id}
                   title={product.product_name}
-                  image={product.image}
+                  image={product.imgUrl}
                   price={product.price}
                   onClick={() => {
                     setSales([
