@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { DummyProductData, subFilters } from "../constants";
+import { subFilters } from "../constants";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
 import { reporticon } from "../assets";
