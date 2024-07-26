@@ -103,7 +103,7 @@ const HomePage = () => {
             placeholder="Prudoct Code"
             className="py-2 px-2 w-full outline outline-1 outline-slate-800/25 rounded-l-md"
           />
-          <button className="h-full w-10 bg-orange-500 flex items-center justify-center outline outline-1 outline-orange-500 rounded-r-md">
+          <button className="h-full w-10 hover:bg-orange-600 bg-orange-500 flex items-center justify-center outline outline-1 outline-orange-500 rounded-r-md">
             <img src={plus} alt="" className="w-5 h-5 invert" />
           </button>
         </div>
