@@ -5,6 +5,7 @@ import { reporticon } from "../assets";
 
 const ReportPage = () => {
   const [salesDetails, setSalesDetails] = useState([]);
+  // const [filter, SetFilter] = useState("All");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +53,7 @@ const ReportPage = () => {
         invertIcon
         customSytles={"text-white"}
       />
-      <div className="w-full h-[700px] flex flex-row overflow-x-hidden overflow-y-scroll pt-10">
+      <div className="w-full h-[620px] flex flex-row overflow-x-hidden overflow-y-scroll pt-10">
         <table className="min-w-full bg-white border border-gray-200 ">
           <thead>
             <tr>
@@ -85,7 +86,7 @@ const ReportPage = () => {
                 <td className="px-4  border-b">{sales.sale_date}</td>
 
                 <td className="px-4  border-b">
-                  <button className="px-3 py-1 bg-blue-500 text-white rounded">
+                  <button className="px-3 py-1 bg-orange-500 text-white rounded">
                     Action
                   </button>
                 </td>

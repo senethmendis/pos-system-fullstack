@@ -24,6 +24,7 @@ const salesSchema = new Schema({
 // Products schema
 const productSchema = new Schema({
   product_name: { type: String, required: true },
+  product_code: { type: String, required: true },
   category: { type: String },
   price: { type: Number, required: true },
   unit: { type: String },
