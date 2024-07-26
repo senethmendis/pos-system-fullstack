@@ -8,20 +8,20 @@ import axios from "axios";
 
 let DummySalesRow = [];
 
-const discountCodes = [
-  {
-    code: "DISCOUNT10",
-    discount: 10,
-  },
-  {
-    code: "DISCOUNT100",
-    discount: 100,
-  },
-  {
-    code: "DISCOUNT1000",
-    discount: 1000,
-  },
-];
+// const discountCodes = [
+//   {
+//     code: "DISCOUNT10",
+//     discount: 10,
+//   },
+//   {
+//     code: "DISCOUNT100",
+//     discount: 100,
+//   },
+//   {
+//     code: "DISCOUNT1000",
+//     discount: 1000,
+//   },
+// ];
 
 const HomePage = () => {
   const [filter, setFilter] = useState("all");
