@@ -24,12 +24,12 @@ const salesSchema = new Schema({
 // Products schema
 const productSchema = new Schema({
   product_name: { type: String, required: true },
-  product_code: { type: String, required: true },
   category: { type: String },
   price: { type: Number, required: true },
   unit: { type: String },
   imgUrl: { type: String },
   stock_quantity: { type: Number, default: 0 },
+  product_code: { type: String, required: true },
 });
 
 // Inventory schema

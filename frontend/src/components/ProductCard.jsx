@@ -1,11 +1,19 @@
-import { testImage } from "../assets";
+import { bin, refresh, testImage } from "../assets";
 
-const ProductCard = ({ image, title, price, onClick }) => {
+const ProductCard = ({
+  image,
+  title,
+  price,
+  onClick,
+  options,
+  onClickDelete,
+  onClickUpdate,
+}) => {
   return (
     // add height
     <div
       onClick={onClick}
-      className={` bg-white w-full h-[200px] border rounded-lg flex flex-col  items-center hover:scale-105 transition-all duration-150`}
+      className={` bg-white w-full max-h-[250px] border rounded-lg flex flex-col  items-center hover:scale-105 transition-all duration-150`}
     >
       <div className={`${image == "" ? "p-3 " : ""} w-full h-1/2`}>
         {image == "" ? (
@@ -25,6 +33,22 @@ const ProductCard = ({ image, title, price, onClick }) => {
         <h3 className="text-[15px] font-semibold ">{title}</h3>
         <h4 className="text-[15px]">{price}Rs</h4>
       </div>
+      {options ? (
+        <div className="w-full flex items-center py-2 px-2 justify-between">
+          <button
+            className="bg-red-400 p-2 rounded-full"
+            onClick={onClickDelete}
+          >
+            <img src={bin} alt="bin" className="w-4 invert" />
+          </button>
+          <button
+            className="bg-orange-400 p-2 rounded-full"
+            onClick={onClickUpdate}
+          >
+            <img src={refresh} alt="bin" className="w-4 invert" />
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };
