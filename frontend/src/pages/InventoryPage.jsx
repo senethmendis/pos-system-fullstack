@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 import CustomInputField from "../components/CustomInputField";
 import axios from "axios";
 import Button from "../components/Button";
-import { plus, refresh } from "../assets";
+import { clear, plus, refresh } from "../assets";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,24 +20,66 @@ const InventoryPage = () => {
   });
 
   const notify = (text) => toast(text);
+
+  //fetch all products
+  const fetchAllProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/product");
+      setProducts(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  //handle input fields
   const handleChange = (e) => {
     setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  //post request add new products
   const handleClick = async (e) => {
     e.preventDefault();
     try {
       await axios.post("http://localhost:8080/product", product);
       notify("New Product Added!");
+      fetchAllProducts();
     } catch (error) {
       console.log(error);
     }
   };
 
+  const claearProduct = () => {
+    setProduct({
+      product_name: "",
+      category: "", // Corrected spelling
+      price: 0,
+      imgUrl: "",
+      unit: "",
+      stock_quantity: 0,
+      product_code: "",
+    });
+  };
+
+  // const handleUpdateChange = (e) => {
+  //   setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  // };
+  //get update details for the backend
+  // const handleUploadClick = async (id) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios.put("http://localhost:8080/product/" + id, product);
+  //     notify("Product Updated!");
+  //   } catch (error) {
+  //     notify("Error updating product");
+  //   }
+  // };
+
+  //handle delete request
   const handleDeleteClick = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/product/${id}`);
       notify("Product Deleted!");
+      fetchAllProducts();
       //window.location.reload();
     } catch (error) {
       console.log(error);
@@ -46,14 +88,6 @@ const InventoryPage = () => {
   };
 
   useEffect(() => {
-    const fetchAllProducts = async () => {
-      try {
-        const res = await axios.get("http://localhost:8080/product");
-        setProducts(res.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchAllProducts();
   }, [product]);
 
@@ -72,6 +106,7 @@ const InventoryPage = () => {
               placeholder="example product"
               isRequired={true}
               onChange={handleChange}
+              value={product.product_name}
             />
             <CustomInputField
               lableText="Category"
@@ -81,6 +116,7 @@ const InventoryPage = () => {
               placeholder="example category"
               isRequired={true}
               onChange={handleChange}
+              value={product.category}
             />
             <CustomInputField
               lableText="Price"
@@ -90,6 +126,7 @@ const InventoryPage = () => {
               placeholder="0.00"
               isRequired={true}
               onChange={handleChange}
+              value={product.price}
             />
             <CustomInputField
               lableText="Unit"
@@ -99,6 +136,7 @@ const InventoryPage = () => {
               placeholder="KG / g / L / ml "
               isRequired={true}
               onChange={handleChange}
+              value={product.unit}
             />
             <CustomInputField
               lableText="Image Link"
@@ -108,6 +146,7 @@ const InventoryPage = () => {
               placeholder="https://example.com/productA.jpg"
               isRequired={true}
               onChange={handleChange}
+              value={product.imgUrl}
             />
 
             <CustomInputField
@@ -118,6 +157,7 @@ const InventoryPage = () => {
               placeholder="10"
               onChange={handleChange}
               isRequired={true}
+              value={product.stock_quantity}
             />
             <CustomInputField
               lableText="Product Code"
@@ -127,6 +167,7 @@ const InventoryPage = () => {
               placeholder="P001"
               onChange={handleChange}
               isRequired={true}
+              value={product.product_code}
             />
             <div className="w-full flex flex-row gap-4">
               <Button
@@ -146,6 +187,15 @@ const InventoryPage = () => {
                 invertIcon
                 customSytles="bg-orange-400 text-white font-semibold"
               />
+              <Button
+                icon={clear}
+                isIcon
+                text="Clear"
+                width="w-full"
+                invertIcon
+                customSytles="bg-red-400 text-white font-semibold"
+                onClick={claearProduct}
+              />
             </div>
           </form>
         </div>
@@ -159,6 +209,9 @@ const InventoryPage = () => {
                 price={product.price}
                 options
                 onClickDelete={() => handleDeleteClick(product._id)}
+                onClick={() => {
+                  setProduct(product);
+                }}
               />
             ))}
           </div>

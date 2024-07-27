@@ -14,6 +14,7 @@ import stock from "./icons/stock.png";
 import refresh from "./icons/refresh.png";
 import testImage from "./icons/image.png";
 import dashboard from "./icons/dashboard.png";
+import clear from "./icons/clear.png";
 
 export {
   cancel,
@@ -32,4 +33,5 @@ export {
   refresh,
   testImage,
   dashboard,
+  clear,
 };

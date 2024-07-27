@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import { Customer, Sale, Product, Inventory, Report } from "./model/model.js"; // Ensure .js extension and named imports
+import e from "express";
 
 dotenv.config();
 
@@ -37,6 +38,8 @@ app.get("/test", (req, res) => {
   res.json("Hello Test");
 });
 
+//------------------------------------------------------------------------------------------------------
+
 // Get all customers
 app.get("/dash", async (req, res) => {
   try {
@@ -56,6 +59,8 @@ app.get("/customers", async (req, res) => {
   }
 });
 
+//------------------------------------------------------------------------------------------------------
+
 // Get all sales
 app.get("/sales", async (req, res) => {
   try {
@@ -66,15 +71,7 @@ app.get("/sales", async (req, res) => {
   }
 });
 
-// Get all Product
-app.get("/product", async (req, res) => {
-  try {
-    const product = await Product.find();
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ message: "Error retrieving customers", error });
-  }
-});
+//------------------------------------------------------------------------------------------------------
 
 // Get all Inventory
 app.get("/inventory", async (req, res) => {
@@ -86,6 +83,8 @@ app.get("/inventory", async (req, res) => {
   }
 });
 
+//------------------------------------------------------------------------------------------------------
+
 // Get all Report
 app.get("/report", async (req, res) => {
   try {
@@ -96,7 +95,17 @@ app.get("/report", async (req, res) => {
   }
 });
 
-//------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------------------------------------------------------
+
+// Get all Product
+app.get("/product", async (req, res) => {
+  try {
+    const product = await Product.find();
+    res.status(200).json(product);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving customers", error });
+  }
+});
 
 //add new product
 app.post("/product", (req, res) => {
@@ -121,3 +130,31 @@ app.delete("/product/:id", async (req, res) => {
   res.json();
   console.log(result + " Deleted!");
 });
+
+//update product
+app.put("/product/:id", (req, res) => {
+  const product = new Product({
+    _id: req.params.id,
+    product_name: req.body.product_name,
+    category: req.body.category,
+    price: req.body.price,
+    unit: req.body.unit,
+    imgUrl: req.body.imgUrl,
+    stock_quantity: req.body.stock_quantity,
+    product_code: req.body.product_code,
+  });
+
+  Product.updateOne({ _id: req.params.id }, product)
+    .then(() => {
+      res.status(201).json({
+        message: "Product Updated!",
+      });
+    })
+    .catch((e) => {
+      res.status(400).json({
+        error: e,
+      });
+    });
+});
+
+//------------------------------------------------------------------------------------------------------
