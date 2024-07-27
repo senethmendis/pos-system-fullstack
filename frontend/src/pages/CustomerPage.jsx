@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from 'axios'
-import { usericon } from "../assets";
+import axios from "axios";
 
 const CustomerPage = () => {
   const [customers, setCustomers] = useState([]);
@@ -56,15 +55,15 @@ const CustomerPage = () => {
                   </td>
 
                   <td className="px-4 py-2 border-b">
-                  <span>{customer.email}</span>
+                    <span>{customer.email}</span>
                   </td>
 
                   <td className="px-4 py-2 border-b">
-                  <span>{customer.address}</span>
+                    <span>{customer.address}</span>
                   </td>
 
                   <td className="px-4 py-2 border-b">
-                  <span>{customer.phone}</span>
+                    <span>{customer.phone}</span>
                   </td>
 
                   <td className="px-4 py-2 border-b">{customer.spent}</td>
@@ -74,7 +73,6 @@ const CustomerPage = () => {
                       Action
                     </button>
                   </td>
-
                 </tr>
               ))}
             </tbody>
