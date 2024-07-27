@@ -6,6 +6,7 @@ const CustomInputField = ({
   isRequired,
   onChange,
   name,
+  value,
 }) => {
   return (
     <div className="mb-5">
@@ -23,6 +24,7 @@ const CustomInputField = ({
         required={isRequired}
         onChange={onChange}
         name={name}
+        value={value}
       />
     </div>
   );

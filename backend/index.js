@@ -150,7 +150,7 @@ app.put("/product/:id", (req, res) => {
         message: "Product Updated!",
       });
     })
-    .catch((error) => {
+    .catch((e) => {
       res.status(400).json({
         error: e,
       });

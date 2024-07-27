@@ -6,23 +6,6 @@ import {
   stock,
   dashboard,
 } from "../assets/index";
-import {
-  apple,
-  banana,
-  bread,
-  butter,
-  carrots,
-  cheese,
-  chicken,
-  eggs,
-  milk,
-  oranges,
-  pasta,
-  potatoes,
-  rice,
-  spinach,
-  tomato,
-} from "../assets/products/index";
 
 export const NavbarItems = [
   {

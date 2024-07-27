@@ -7,15 +7,16 @@ const ProductCard = ({
   onClick,
   options,
   onClickDelete,
-  onClickUpdate,
 }) => {
   return (
     // add height
     <div
-      onClick={onClick}
       className={` bg-white w-full max-h-[250px] border rounded-lg flex flex-col shadow-xl  items-center hover:scale-105 transition-all duration-150`}
     >
-      <div className={`${image == "" ? "p-3 " : ""} w-full h-1/2`}>
+      <div
+        onClick={onClick}
+        className={`${image == "" ? "p-3 " : ""} w-full h-1/2`}
+      >
         {image == "" ? (
           <div className="flex gap-3 items-center">
             <img src={testImage} className="w-[30px] h-[30px] object-cover " />
@@ -40,12 +41,6 @@ const ProductCard = ({
             onClick={onClickDelete}
           >
             <img src={bin} alt="bin" className="w-4 invert" />
-          </button>
-          <button
-            className="bg-orange-400 p-2 rounded-full hover:bg-orange-600"
-            onClick={onClickUpdate}
-          >
-            <img src={refresh} alt="bin" className="w-4 invert" />
           </button>
         </div>
       ) : null}
