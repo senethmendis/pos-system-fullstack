@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
-import { DummyProductData, subFilters } from "../constants";
+import { subFilters } from "../constants";
 import ProductCard from "../components/ProductCard";
 import Button from "../components/Button";
-import { reporticon } from "../assets";
+import { plus, reporticon } from "../assets";
 import CartItemRow from "../components/CartItemRow";
 import axios from "axios";
 
 let DummySalesRow = [];
 
-const discountCodes = [
-  {
-    code: "DISCOUNT10",
-    discount: 10,
-  },
-  {
-    code: "DISCOUNT100",
-    discount: 100,
-  },
-  {
-    code: "DISCOUNT1000",
-    discount: 1000,
-  },
-];
+// const discountCodes = [
+//   {
+//     code: "DISCOUNT10",
+//     discount: 10,
+//   },
+//   {
+//     code: "DISCOUNT100",
+//     discount: 100,
+//   },
+//   {
+//     code: "DISCOUNT1000",
+//     discount: 1000,
+//   },
+// ];
 
 const HomePage = () => {
   const [filter, setFilter] = useState("all");
@@ -76,7 +76,7 @@ const HomePage = () => {
                 <ProductCard
                   key={product._id}
                   title={product.product_name}
-                  image={product.image}
+                  image={product.imgUrl}
                   price={product.price}
                   onClick={() => {
                     setSales([
@@ -97,6 +97,16 @@ const HomePage = () => {
 
       {/* right side cart item and total cal */}
       <div className="w-1/2 h-full bg-white">
+        <div className="w-full h-[40px] flex flex-row items-center ">
+          <input
+            type="text"
+            placeholder="Prudoct Code"
+            className="py-2 px-2 w-full outline outline-1 outline-slate-800/25 rounded-l-md"
+          />
+          <button className="h-full w-10 hover:bg-orange-600 bg-orange-500 flex items-center justify-center outline outline-1 outline-orange-500 rounded-r-md">
+            <img src={plus} alt="" className="w-5 h-5 invert" />
+          </button>
+        </div>
         <div className="w-full border-l border-b border-gray-100 p-2 flex justify-between">
           <h1 className="font-semibold">Invoice #0001</h1>
         </div>
@@ -174,6 +184,7 @@ const HomePage = () => {
                   customSytles={"text-white"}
                   isIcon
                   icon={reporticon}
+                  invertIcon
                 />
                 <Button
                   text="Process"

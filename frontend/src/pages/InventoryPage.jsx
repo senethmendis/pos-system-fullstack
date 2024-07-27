@@ -4,9 +4,46 @@ import CustomInputField from "../components/CustomInputField";
 import axios from "axios";
 import Button from "../components/Button";
 import { plus, refresh } from "../assets";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const InventoryPage = () => {
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({
+    product_name: "",
+    category: "", // Corrected spelling
+    price: 0,
+    imgUrl: "",
+    unit: "",
+    stock_quantity: 0,
+    product_code: "",
+  });
+
+  const notify = (text) => toast(text);
+  const handleChange = (e) => {
+    setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:8080/product", product);
+      notify("New Product Added!");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeleteClick = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/product/${id}`);
+      notify("Product Deleted!");
+      //window.location.reload();
+    } catch (error) {
+      console.log(error);
+      notify("Error deleting product");
+    }
+  };
 
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -18,10 +55,11 @@ const InventoryPage = () => {
       }
     };
     fetchAllProducts();
-  }, []);
+  }, [product]);
 
   return (
     <section className="w-full h-full flex flex-col bg-parimary-gray">
+      <ToastContainer newestOnTop closeOnClick />
       <h1 className="my-5 mx-5 font-semibold text-2xl">InventoryPage</h1>
       <div className="w-full h-[700px] flex flex-row">
         <div className="w-1/2 h-full bg-white mx-3 rounded-lg">
@@ -30,42 +68,64 @@ const InventoryPage = () => {
               lableText="Product Name"
               inputType="text"
               inputId="productName"
+              name="product_name"
               placeholder="example product"
               isRequired={true}
+              onChange={handleChange}
             />
             <CustomInputField
               lableText="Category"
               inputType="text"
               inputId="category"
+              name="category"
               placeholder="example category"
               isRequired={true}
-            />
-            <CustomInputField
-              lableText="Image Link"
-              inputType="text"
-              inputId="link"
-              placeholder="https://example.com/productA.jpg"
-              isRequired={true}
+              onChange={handleChange}
             />
             <CustomInputField
               lableText="Price"
               inputType="number"
               inputId="price"
+              name="price"
               placeholder="0.00"
               isRequired={true}
+              onChange={handleChange}
             />
             <CustomInputField
               lableText="Unit"
               inputType="text"
               inputId="unit"
+              name="unit"
               placeholder="KG / g / L / ml "
               isRequired={true}
+              onChange={handleChange}
             />
+            <CustomInputField
+              lableText="Image Link"
+              inputType="text"
+              inputId="link"
+              name="imgUrl"
+              placeholder="https://example.com/productA.jpg"
+              isRequired={true}
+              onChange={handleChange}
+            />
+
             <CustomInputField
               lableText="Quantity"
               inputType="number"
               inputId="quantity"
+              name="stock_quantity"
               placeholder="10"
+              onChange={handleChange}
+              isRequired={true}
+            />
+            <CustomInputField
+              lableText="Product Code"
+              inputType="text"
+              inputId="productCode"
+              name="product_code"
+              placeholder="P001"
+              onChange={handleChange}
               isRequired={true}
             />
             <div className="w-full flex flex-row gap-4">
@@ -76,6 +136,7 @@ const InventoryPage = () => {
                 width="w-full"
                 invertIcon
                 customSytles="bg-green-500 text-white font-semibold"
+                onClick={handleClick}
               />
               <Button
                 icon={refresh}
@@ -83,7 +144,7 @@ const InventoryPage = () => {
                 text="Update"
                 width="w-full"
                 invertIcon
-                customSytles="bg-orange-500 text-white font-semibold"
+                customSytles="bg-orange-400 text-white font-semibold"
               />
             </div>
           </form>
@@ -96,6 +157,8 @@ const InventoryPage = () => {
                 title={product.product_name}
                 image={product.imgUrl}
                 price={product.price}
+                options
+                onClickDelete={() => handleDeleteClick(product._id)}
               />
             ))}
           </div>

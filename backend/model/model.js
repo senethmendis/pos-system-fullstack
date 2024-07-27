@@ -29,6 +29,7 @@ const productSchema = new Schema({
   unit: { type: String },
   imgUrl: { type: String },
   stock_quantity: { type: Number, default: 0 },
+  product_code: { type: String, required: true },
 });
 
 // Inventory schema

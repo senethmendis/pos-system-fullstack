@@ -38,6 +38,15 @@ app.get("/test", (req, res) => {
 });
 
 // Get all customers
+app.get("/dash", async (req, res) => {
+  try {
+    res.json("Dashboard Data ? ");
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving customers", error });
+  }
+});
+
+// Get all customers
 app.get("/customers", async (req, res) => {
   try {
     const customers = await Customer.find();
@@ -85,4 +94,30 @@ app.get("/report", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Error retrieving customers", error });
   }
+});
+
+//------------------------------------------------------------------------------------------------------//
+
+//add new product
+app.post("/product", (req, res) => {
+  const product = new Product({
+    name: req.body.name,
+    product_name: req.body.product_name,
+    category: req.body.category,
+    price: req.body.price,
+    unit: req.body.unit,
+    imgUrl: req.body.imgUrl,
+    stock_quantity: req.body.stock_quantity,
+    product_code: req.body.product_code,
+  });
+  product.save();
+  res.json(product);
+  console.log(product);
+});
+
+//delete a product
+app.delete("/product/:id", async (req, res) => {
+  const result = await Product.findByIdAndDelete(req.params.id);
+  res.json();
+  console.log(result + " Deleted!");
 });
