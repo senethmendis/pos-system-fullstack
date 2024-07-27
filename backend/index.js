@@ -40,7 +40,7 @@ app.get("/test", (req, res) => {
 
 //------------------------------------------------------------------------------------------------------
 
-// Get all customers
+// Get all dashdata
 app.get("/dash", async (req, res) => {
   try {
     res.json("Dashboard Data ? ");
@@ -48,6 +48,8 @@ app.get("/dash", async (req, res) => {
     res.status(500).json({ message: "Error retrieving customers", error });
   }
 });
+
+//------------------------------------------------------------------------------------------------------
 
 // Get all customers
 app.get("/customers", async (req, res) => {
