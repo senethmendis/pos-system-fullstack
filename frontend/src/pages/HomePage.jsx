@@ -6,22 +6,7 @@ import { plus, reporticon } from "../assets";
 import CartItemRow from "../components/CartItemRow";
 import axios from "axios";
 
-let DummySalesRow = [];
-
-// const discountCodes = [
-//   {
-//     code: "DISCOUNT10",
-//     discount: 10,
-//   },
-//   {
-//     code: "DISCOUNT100",
-//     discount: 100,
-//   },
-//   {
-//     code: "DISCOUNT1000",
-//     discount: 1000,
-//   },
-// ];
+const DummySalesRow = [];
 
 const HomePage = () => {
   const [filter, setFilter] = useState("all");
@@ -34,33 +19,35 @@ const HomePage = () => {
   useEffect(() => {
     const fetchAllProducts = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/product");
-        setProducts(res.data);
+        const res = await axios.get("http://localhost:8080/products");
+        setProducts(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.log(error.message);
+        setProducts([]);
       }
     };
 
     fetchAllProducts();
+  }, []);
 
-    const total = sales.reduce(
-      (sum, product) => sum + parseInt(product.Price, 0) - discountAmount,
-      0
-    );
-    setTotalAmount(total);
-  }, [sales]);
+  useEffect(() => {
+    const total =
+      sales.reduce((sum, product) => sum + parseInt(product.Price, 10), 0) -
+      parseInt(discountAmount, 10);
+    setTotalAmount(total < 0 ? 0 : total);
+  }, [sales, discountAmount]);
 
   return (
     <section className="w-full h-full flex flex-row bg-parimary-gray">
       <div className="w-full h-full p-3">
         <div className="w-full items-center flex flex-row border border-gray-100 justify-evenly bg-white py-1 rounded-md mb-5 shadow-2xl">
-          {subFilters.map((filter, i) => (
+          {subFilters.map((filterItem, i) => (
             <p
-              onClick={() => setFilter(filter)}
+              onClick={() => setFilter(filterItem)}
               key={i}
-              className={` px-2 capitalize cursor-pointer rounded-md hover:bg-orange-400 hover:text-white transition-all duration-150`}
+              className="px-2 capitalize cursor-pointer rounded-md hover:bg-orange-400 hover:text-white transition-all duration-150"
             >
-              {filter}
+              {filterItem}
             </p>
           ))}
         </div>
@@ -69,12 +56,12 @@ const HomePage = () => {
             {products
               .filter((product) => {
                 return filter.toLowerCase() === "all"
-                  ? product
+                  ? true
                   : product.category.toLowerCase().includes(filter);
               })
               .map((product) => (
                 <ProductCard
-                  key={product._id}
+                  key={product.product_id}
                   title={product.product_name}
                   image={product.imgUrl}
                   price={product.price}
@@ -83,7 +70,7 @@ const HomePage = () => {
                     setSales([
                       ...sales,
                       {
-                        productId: product._id,
+                        productId: product.product_id,
                         productName: product.product_name,
                         Price: product.price,
                       },
@@ -101,11 +88,11 @@ const HomePage = () => {
         <div className="w-full h-[40px] flex flex-row items-center ">
           <input
             type="text"
-            placeholder="Prudoct Code"
+            placeholder="Product Code"
             className="py-2 px-2 w-full outline outline-1 outline-slate-800/25 rounded-l-md"
           />
           <button className="h-full w-10 hover:bg-orange-600 bg-orange-500 flex items-center justify-center outline outline-1 outline-orange-500 rounded-r-md">
-            <img src={plus} alt="" className="w-5 h-5 invert" />
+            <img src={plus} alt="add" className="w-5 h-5 invert" />
           </button>
         </div>
         <div className="w-full border-l border-b border-gray-100 p-2 flex justify-between">
@@ -113,7 +100,7 @@ const HomePage = () => {
         </div>
         {/* cart items */}
         <div className="w-full h-full py-4 px-2">
-          <div className="w-full h-[430px] overflow-y-scroll overflow-x-hidden  no-scrollbar  flex flex-col gap-2">
+          <div className="w-full h-[430px] overflow-y-scroll overflow-x-hidden no-scrollbar flex flex-col gap-2">
             {sales.map((product, i) => (
               <CartItemRow
                 key={i}
@@ -136,7 +123,7 @@ const HomePage = () => {
               <Button
                 text={toggleDiscount ? "Close" : "Add"}
                 isBackground={false}
-                customSytles="text-black font-semibold"
+                customStyles="text-black font-semibold"
                 onClick={() => setToggleDiscount(!toggleDiscount)}
               />
               <div className="flex flex-row items-center gap-6">
@@ -150,16 +137,21 @@ const HomePage = () => {
                 ) : (
                   <>
                     <p className="text-orange-400 text-[14px]">Discount</p>
-                    <p className="text-orange-400 text-[14px]">Coupen Code</p>
+                    <p className="text-orange-400 text-[14px]">Coupon Code</p>
                   </>
                 )}
               </div>
             </div>
-            <div className=" w-full h-full py-3">
+            <div className="w-full h-full py-3">
               <div className="w-full h-full flex flex-col">
                 <div className="flex flex-row justify-between">
                   <p>Subtotal</p>
-                  <strong className="text-[12px]">200.00</strong>
+                  <strong className="text-[12px]">
+                    {sales.reduce(
+                      (sum, product) => sum + parseInt(product.Price, 10),
+                      0
+                    )}
+                  </strong>
                 </div>
                 <div className="flex flex-row justify-between">
                   <p>Discount</p>
@@ -182,7 +174,7 @@ const HomePage = () => {
                   color="bg-orange-400"
                   width="w-full"
                   isBackground={true}
-                  customSytles={"text-white"}
+                  customStyles="text-white"
                   isIcon
                   icon={reporticon}
                   invertIcon
@@ -191,12 +183,12 @@ const HomePage = () => {
                   text="Process"
                   width="w-full"
                   color="bg-primary-light-green"
-                  customSytles={"text-white"}
+                  customStyles="text-white"
                 />
               </div>
             </div>
           </div>
-          {/* card bottom part  end*/}
+          {/* card bottom part end */}
         </div>
       </div>
     </section>

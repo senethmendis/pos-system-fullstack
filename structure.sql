@@ -62,3 +62,6 @@ CREATE TABLE IF NOT EXISTS Reports (
     total_income DECIMAL(10, 2),
     generated_date DATE
 );
+
+
+

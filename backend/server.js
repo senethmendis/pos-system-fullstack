@@ -33,6 +33,89 @@ app.get("/test", (req, res) => {
   res.send("Hello from server");
 });
 
+//--------------------------------------------------
+// Get all customers
+app.get("/customers", (req, res) => {
+  const query = "SELECT * FROM customers";
+  db.query(query, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    //console.table(data);
+    return res.json(data);
+  });
+});
+
+//--------------------------------------------------
+// Get all sales
+app.get("/sales", (req, res) => {
+  const query = "SELECT * FROM sales";
+  db.query(query, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    //console.table(data);
+    return res.json(data);
+  });
+});
+
+//--------------------------------------------------
+// Get all inventory
+app.get("/inventory", (req, res) => {
+  const query = "SELECT * FROM inventory";
+  db.query(query, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    //console.table(data);
+    return res.json(data);
+  });
+});
+
+//--------------------------------------------------
+// Get all report
+app.get("/report", (req, res) => {
+  const query = "SELECT * FROM report";
+  db.query(query, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    //console.table(data);
+    return res.json(data);
+  });
+});
+
+//--------------------------------------------------
+// Get all product
+app.get("/products", (req, res) => {
+  const query = "SELECT * FROM products";
+  db.query(query, (err, data) => {
+    if (err) {
+      return res.json(err);
+    }
+    //console.table(data);
+    return res.json(data);
+  });
+});
+
+app.post("/products", (req, res) => {
+  const query =
+    "INSERT INTO products (`product_name`, `category`, `price`, `unit`, `stock_quantity`) VALUES (?)";
+  const values = [
+    req.body.product_name,
+    req.body.category,
+    req.body.price,
+    req.body.unit,
+    req.body.stock_quantity,
+  ];
+  db.query(query, [values], (err, data) => {
+    if (err) return err;
+    return res.json("Product Added!");
+  });
+});
+
+//--------------------------------------------------
+
 app.listen(port, () => {
   console.log(`server is running on port ${port}!`);
 });

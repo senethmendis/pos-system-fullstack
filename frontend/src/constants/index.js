@@ -46,15 +46,15 @@ export const CustomerTableColumns = [
 ];
 
 export const subFilters = [
-  "all",
-  "vegies",
-  "fruites",
-  "dairy",
-  "meat",
-  "other",
-  "gyn",
+  "All",
+  "Vegetables",
+  "Fruits",
+  "Dairy",
+  "Meat",
+  "Seafood",
+  "Bakery",
 ];
-export const Unites = ["KG", "ml", "g"];
+export const Unites = ["KG", "ml", "g", "loaf"];
 
 export const DummySalesRow = [
   {

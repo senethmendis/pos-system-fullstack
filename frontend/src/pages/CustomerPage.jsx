@@ -42,7 +42,7 @@ const CustomerPage = () => {
             <tbody>
               {customers.map((customer, index) => (
                 <tr
-                  key={customer._id}
+                  key={customer.customer_id}
                   className="hover:bg-gray-200 cursor-pointer"
                 >
                   <td className="px-4 py-2 border-b flex items-center">

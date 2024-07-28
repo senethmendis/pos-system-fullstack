@@ -27,7 +27,7 @@ const InventoryPage = () => {
   //fetch all products
   const fetchAllProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/product");
+      const res = await axios.get("http://localhost:8080/products");
       setProducts(res.data);
     } catch (error) {
       console.log(error.message);
@@ -43,7 +43,7 @@ const InventoryPage = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/product", product);
+      await axios.post("http://localhost:8080/products", product);
       notify("New Product Added!");
       fetchAllProducts();
     } catch (error) {
@@ -72,7 +72,7 @@ const InventoryPage = () => {
   const handleUploadClick = async (e, id) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/product/${id}`, product);
+      await axios.put(`http://localhost:8080/products/${id}`, product);
       notify("Product Updated!");
       fetchAllProducts();
     } catch (error) {
@@ -83,7 +83,7 @@ const InventoryPage = () => {
   //handle delete request
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/product/${id}`);
+      await axios.delete(`http://localhost:8080/products/${id}`);
       notify("Product Deleted!");
       fetchAllProducts();
       //window.location.reload();
@@ -208,13 +208,13 @@ const InventoryPage = () => {
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
             {products.map((product, i) => (
               <ProductCard
-                key={product._id}
+                key={product.product_id}
                 title={product.product_name}
                 image={product.imgUrl}
                 price={product.price}
                 category={product.category}
                 options
-                onClickDelete={() => handleDeleteClick(product._id)}
+                onClickDelete={() => handleDeleteClick(product.product_id)}
                 onClick={() => {
                   setProduct(product);
                 }}
