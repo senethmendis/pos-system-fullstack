@@ -11,6 +11,7 @@ import CustomSelectField from "../components/CustomSelectField";
 
 const InventoryPage = () => {
   const [products, setProducts] = useState([]);
+
   const [product, setProduct] = useState({
     product_name: "",
     category: "", // Corrected spelling
@@ -50,7 +51,7 @@ const InventoryPage = () => {
     }
   };
 
-  const claearProduct = () => {
+  const clearProduct = () => {
     setProduct({
       product_name: "",
       category: "",
@@ -65,21 +66,24 @@ const InventoryPage = () => {
   // const handleUpdateChange = (e) => {
   //   setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   // };
+
   //get update details for the backend
-  // const handleUploadClick = async (id) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.put("http://localhost:8080/product/" + id, product);
-  //     notify("Product Updated!");
-  //   } catch (error) {
-  //     notify("Error updating product");
-  //   }
-  // };
+
+  const handleUploadClick = async (e, id) => {
+    e.preventDefault();
+    try {
+      await axios.put(`http://localhost:8080/product/${id}`, product);
+      notify("Product Updated!");
+      fetchAllProducts();
+    } catch (error) {
+      notify("Error updating product");
+    }
+  };
 
   //handle delete request
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/inventories/${id}`);
+      await axios.delete(`http://localhost:8080/product/${id}`);
       notify("Product Deleted!");
       fetchAllProducts();
       //window.location.reload();
@@ -91,7 +95,7 @@ const InventoryPage = () => {
 
   useEffect(() => {
     fetchAllProducts();
-  }, [product]);
+  }, []);
 
   return (
     <section className="w-full h-full flex flex-col bg-parimary-gray">
@@ -110,7 +114,6 @@ const InventoryPage = () => {
               onChange={handleChange}
               value={product.product_name}
             />
-
             <CustomSelectField
               isRequired={true}
               lableText="Category"
@@ -121,7 +124,15 @@ const InventoryPage = () => {
               itemArry={subFilters}
               isCapitalize
             />
-
+            <CustomSelectField
+              isRequired={true}
+              lableText="Unit"
+              inputId="unit"
+              name="unit"
+              itemArry={Unites}
+              value={product.unit}
+              onChange={handleChange}
+            />
             <CustomInputField
               lableText="Price"
               inputType="number"
@@ -131,16 +142,6 @@ const InventoryPage = () => {
               isRequired={true}
               onChange={handleChange}
               value={product.price}
-            />
-
-            <CustomSelectField
-              isRequired={true}
-              lableText="Unit"
-              inputId="unit"
-              name="unit"
-              itemArry={Unites}
-              value={product.unit}
-              onChange={handleChange}
             />
             <CustomInputField
               lableText="Image Link"
@@ -189,6 +190,7 @@ const InventoryPage = () => {
                 width="w-full"
                 invertIcon
                 customSytles="bg-orange-400 text-white font-semibold"
+                onClick={(e) => handleUploadClick(e, product._id)}
               />
               <Button
                 icon={clear}
@@ -197,7 +199,7 @@ const InventoryPage = () => {
                 width="w-full"
                 invertIcon
                 customSytles="bg-red-400 text-white font-semibold"
-                onClick={claearProduct}
+                onClick={clearProduct}
               />
             </div>
           </form>

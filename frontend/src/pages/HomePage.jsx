@@ -78,6 +78,7 @@ const HomePage = () => {
                   title={product.product_name}
                   image={product.imgUrl}
                   price={product.price}
+                  category={product.category}
                   onClick={() => {
                     setSales([
                       ...sales,

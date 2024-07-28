@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import { Customer, Sale, Product, Inventory, Report } from "./model/model.js"; // Ensure .js extension and named imports
-import e from "express";
 
 dotenv.config();
 
