@@ -54,6 +54,7 @@ export const subFilters = [
   "other",
   "gyn",
 ];
+export const Unites = ["KG", "ml", "g"];
 
 export const DummySalesRow = [
   {

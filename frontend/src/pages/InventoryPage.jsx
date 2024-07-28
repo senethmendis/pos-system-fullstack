@@ -4,9 +4,10 @@ import CustomInputField from "../components/CustomInputField";
 import axios from "axios";
 import Button from "../components/Button";
 import { clear, plus, refresh } from "../assets";
-
+import { subFilters, Unites } from "../constants/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomSelectField from "../components/CustomSelectField";
 
 const InventoryPage = () => {
   const [products, setProducts] = useState([]);
@@ -52,7 +53,7 @@ const InventoryPage = () => {
   const claearProduct = () => {
     setProduct({
       product_name: "",
-      category: "", // Corrected spelling
+      category: "",
       price: 0,
       imgUrl: "",
       unit: "",
@@ -78,7 +79,7 @@ const InventoryPage = () => {
   //handle delete request
   const handleDeleteClick = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/product/${id}`);
+      await axios.delete(`http://localhost:8080/inventories/${id}`);
       notify("Product Deleted!");
       fetchAllProducts();
       //window.location.reload();
@@ -109,16 +110,18 @@ const InventoryPage = () => {
               onChange={handleChange}
               value={product.product_name}
             />
-            <CustomInputField
+
+            <CustomSelectField
+              isRequired={true}
               lableText="Category"
-              inputType="text"
               inputId="category"
               name="category"
-              placeholder="example category"
-              isRequired={true}
-              onChange={handleChange}
               value={product.category}
+              onChange={handleChange}
+              itemArry={subFilters}
+              isCapitalize
             />
+
             <CustomInputField
               lableText="Price"
               inputType="number"
@@ -129,15 +132,15 @@ const InventoryPage = () => {
               onChange={handleChange}
               value={product.price}
             />
-            <CustomInputField
+
+            <CustomSelectField
+              isRequired={true}
               lableText="Unit"
-              inputType="text"
               inputId="unit"
               name="unit"
-              placeholder="KG / g / L / ml "
-              isRequired={true}
-              onChange={handleChange}
+              itemArry={Unites}
               value={product.unit}
+              onChange={handleChange}
             />
             <CustomInputField
               lableText="Image Link"
@@ -149,7 +152,6 @@ const InventoryPage = () => {
               onChange={handleChange}
               value={product.imgUrl}
             />
-
             <CustomInputField
               lableText="Quantity"
               inputType="number"
@@ -202,12 +204,13 @@ const InventoryPage = () => {
         </div>
         <div className="w-full p-3">
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
-            {products.map((product) => (
+            {products.map((product, i) => (
               <ProductCard
                 key={product._id}
                 title={product.product_name}
                 image={product.imgUrl}
                 price={product.price}
+                category={product.category}
                 options
                 onClickDelete={() => handleDeleteClick(product._id)}
                 onClick={() => {

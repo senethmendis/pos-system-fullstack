@@ -4,6 +4,7 @@ const ProductCard = ({
   image,
   title,
   price,
+  category,
   onClick,
   options,
   onClickDelete,
@@ -30,9 +31,10 @@ const ProductCard = ({
           />
         )}
       </div>
-      <div className="w-full h-full p-4">
+      <div className="flex flex-col w-full h-full p-4">
         <h3 className="text-[15px] font-semibold ">{title}</h3>
         <h4 className="text-[15px]">{price}Rs</h4>
+        <h4 className="text-[15px]">{category}</h4>
       </div>
       {options ? (
         <div className="w-full flex items-center py-2 px-2 justify-between">
