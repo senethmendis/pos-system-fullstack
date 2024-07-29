@@ -16,8 +16,6 @@ const CustomerPage = () => {
     fetchAllCustomers();
   }, []);
 
-  console.log(customers);
-
   return (
     <section className="w-full h-full flex flex-row bg-parimary-gray">
       <div className="w-full h-[700px] flex flex-col p-3">

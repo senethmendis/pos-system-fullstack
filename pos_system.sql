@@ -25,16 +25,16 @@ CREATE TABLE `products` (
 
 -- Insert sample data into the products table
 INSERT INTO `products` (`product_id`, `product_name`, `category`, `price`, `unit`, `stock_quantity`, `image_url`) VALUES
-(1, 'Apple', 'Fruits', '0.50', 'each', 150, 'http://example.com/images/apple.jpg'),
-(2, 'Banana', 'Fruits', '0.30', 'each', 200, 'http://example.com/images/banana.jpg'),
-(3, 'Carrot', 'Vegetables', '0.70', 'kg', 100, 'http://example.com/images/carrot.jpg'),
-(4, 'Broccoli', 'Vegetables', '1.20', 'kg', 80, 'http://example.com/images/broccoli.jpg'),
-(5, 'Chicken Breast', 'Meat', '5.00', 'kg', 50, 'http://example.com/images/chicken_breast.jpg'),
-(6, 'Salmon Fillet', 'Seafood', '8.00', 'kg', 30, 'http://example.com/images/salmon_fillet.jpg'),
-(7, 'Milk', 'Dairy', '1.00', 'liter', 120, 'http://example.com/images/milk.jpg'),
-(8, 'Eggs', 'Dairy', '2.50', 'dozen', 90, 'http://example.com/images/eggs.jpg'),
-(9, 'Bread', 'Bakery', '2.00', 'loaf', 70, 'http://example.com/images/bread.jpg'),
-(10, 'Orange Juice', 'Beverages', '3.00', 'liter', 60, 'http://example.com/images/orange_juice.jpg');
+(1, 'Apple', 'Fruits', '0.50', 'each', 150, 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2021/06/apple-varieties-types-1296x728-header.jpg?w=1155&h=1528'),
+(2, 'Banana', 'Fruits', '0.30', 'each', 200, 'https://www.foodandwine.com/thmb/4fzQW9u60XlhTk52CIuM1BlLhcc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/amazonfreebananas-em-86304874-2000-5a276309cf1944349fb55818c98c7b1b.jpg'),
+(3, 'Carrot', 'Vegetables', '0.70', 'kg', 100, 'https://www.economist.com/cdn-cgi/image/width=1424,quality=80,format=auto/sites/default/files/20180929_BLP506.jpg'),
+(4, 'Broccoli', 'Vegetables', '1.20', 'kg', 80, 'https://images.squarespace-cdn.com/content/v1/5b5aa0922487fd1ce32c117a/1547765015801-FSR1DVSKCZU3PAYWIRQG/broccoli.jpg'),
+(5, 'Chicken Breast', 'Meat', '5.00', 'kg', 50, 'https://www.everydaycheapskate.com/wp-content/uploads/20995112_s.jpg'),
+(6, 'Salmon Fillet', 'Seafood', '8.00', 'kg', 30, 'https://allfreshseafood.com/cdn/shop/files/2salmonfilletscanadian_1.jpg?v=1698852411'),
+(7, 'Milk', 'Dairy', '1.00', 'liter', 120, 'https://cdn.loveandlemons.com/wp-content/uploads/2020/01/oat-milk.jpg'),
+(8, 'Eggs', 'Dairy', '2.50', 'dozen', 90, 'https://cdn.britannica.com/94/151894-050-F72A5317/Brown-eggs.jpg'),
+(9, 'Bread', 'Bakery', '2.00', 'loaf', 70, 'https://www.allrecipes.com/thmb/CjzJwg2pACUzGODdxJL1BJDRx9Y=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/6788-amish-white-bread-DDMFS-4x3-6faa1e552bdb4f6eabdd7791e59b3c84.jpg'),
+(10, 'Orange', 'Fruits', '3.00', 'liter', 60, 'https://www.allrecipes.com/thmb/y_uvjwXWAuD6T0RxaS19jFvZyFU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1205638014-2000-d0fbf9170f2d43eeb046f56eec65319c.jpg');
 
 -- Create the sales table
 CREATE TABLE `sales` (

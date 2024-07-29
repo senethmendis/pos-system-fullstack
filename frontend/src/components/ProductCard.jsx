@@ -12,7 +12,7 @@ const ProductCard = ({
   return (
     // add height
     <div
-      className={` bg-white w-full max-h-[250px] border rounded-lg flex flex-col shadow-xl  items-center hover:scale-105 transition-all duration-150`}
+      className={` bg-white w-full max-h-[290px] border rounded-lg flex flex-col shadow-xl  items-center hover:scale-105 transition-all duration-150`}
     >
       <div
         onClick={onClick}
@@ -27,7 +27,7 @@ const ProductCard = ({
           <img
             src={image}
             alt="procut img"
-            className="w-full h-full object-cover rounded-t-lg"
+            className="w-full  h-full object-cover rounded-t-lg"
           />
         )}
       </div>
