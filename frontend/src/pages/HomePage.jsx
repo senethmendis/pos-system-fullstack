@@ -8,7 +8,15 @@ import axios from "axios";
 
 const DummySalesRow = [];
 
+//const discountcode = "SAVE50";
+
 const HomePage = () => {
+  const discountCodeIssue = (discountcode) => {
+    if (discountcode == "SAVE50") {
+      return 50;
+    }
+  };
+
   const [filter, setFilter] = useState("all");
   const [toggleDiscount, setToggleDiscount] = useState(false);
   const [sales, setSales] = useState(DummySalesRow);
@@ -63,7 +71,7 @@ const HomePage = () => {
                 <ProductCard
                   key={product.product_id}
                   title={product.product_name}
-                  image={product.imgUrl}
+                  image={product.image_url}
                   price={product.price}
                   category={product.category}
                   onClick={() => {
@@ -131,7 +139,7 @@ const HomePage = () => {
                   <input
                     type="text"
                     className="w-full h-full px-1 outline-none text-[12px] py-1 rounded-sm"
-                    value={discountAmount}
+                    value={discountCodeIssue(discountAmount)}
                     onChange={(e) => setDiscountAmount(e.target.value)}
                   />
                 ) : (

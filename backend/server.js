@@ -100,17 +100,54 @@ app.get("/products", (req, res) => {
 
 app.post("/products", (req, res) => {
   const query =
-    "INSERT INTO products (`product_name`, `category`, `price`, `unit`, `stock_quantity`) VALUES (?)";
+    "INSERT INTO products (`product_name`, `category`, `price`, `unit`, `stock_quantity`,`image_url`) VALUES (?)";
   const values = [
     req.body.product_name,
     req.body.category,
     req.body.price,
     req.body.unit,
     req.body.stock_quantity,
+    req.body.image_url,
   ];
   db.query(query, [values], (err, data) => {
     if (err) return err;
     return res.json("Product Added!");
+  });
+});
+
+app.delete("/products/:id", (req, res) => {
+  const productId = req.params.id;
+  const query = "DELETE FROM products WHERE product_id = ?";
+
+  db.query(query, [productId], (err, data) => {
+    if (err) {
+      console.error("Error deleting product:", err);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+
+    if (data.affectedRows === 0) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    return res.status(200).json({ message: "Product Deleted!" });
+  });
+});
+
+app.put("/products/:id", (req, res) => {
+  const productId = req.params.id;
+  const query =
+    "UPDATE products SET product_name = ?, category = ?, price = ?, unit = ?,stock_quantity= ?,image_url= ?";
+  const values = [
+    req.body.product_name,
+    req.body.category,
+    req.body.price,
+    req.body.unit,
+    req.body.stock_quantity,
+    req.body.image_url,
+  ];
+  db.query(query, [...values, productId], (err, data) => {
+    if (err) return err;
+    return res.json("Product Updated!");
   });
 });
 

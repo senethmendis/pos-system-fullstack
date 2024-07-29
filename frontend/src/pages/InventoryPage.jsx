@@ -14,12 +14,12 @@ const InventoryPage = () => {
 
   const [product, setProduct] = useState({
     product_name: "",
-    category: "", // Corrected spelling
-    price: 0,
-    imgUrl: "",
+    category: "",
+    price: 0.0,
     unit: "",
     stock_quantity: 0,
     product_code: "",
+    image_url: "",
   });
 
   const notify = (text) => toast(text);
@@ -51,15 +51,17 @@ const InventoryPage = () => {
     }
   };
 
+  //https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/01/Baked-Salmon-1-2.jpg
+
   const clearProduct = () => {
     setProduct({
       product_name: "",
       category: "",
       price: 0,
-      imgUrl: "",
       unit: "",
       stock_quantity: 0,
       product_code: "",
+      image_url: "",
     });
   };
 
@@ -70,6 +72,7 @@ const InventoryPage = () => {
   //get update details for the backend
 
   const handleUploadClick = async (e, id) => {
+    console.log(id);
     e.preventDefault();
     try {
       await axios.put(`http://localhost:8080/products/${id}`, product);
@@ -82,11 +85,12 @@ const InventoryPage = () => {
 
   //handle delete request
   const handleDeleteClick = async (id) => {
+    console.log(id);
     try {
       await axios.delete(`http://localhost:8080/products/${id}`);
       notify("Product Deleted!");
       fetchAllProducts();
-      //window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.log(error);
       notify("Error deleting product");
@@ -151,7 +155,7 @@ const InventoryPage = () => {
               placeholder="https://example.com/productA.jpg"
               isRequired={true}
               onChange={handleChange}
-              value={product.imgUrl}
+              value={product.image_url}
             />
             <CustomInputField
               lableText="Quantity"
@@ -190,7 +194,7 @@ const InventoryPage = () => {
                 width="w-full"
                 invertIcon
                 customSytles="bg-orange-400 text-white font-semibold"
-                onClick={(e) => handleUploadClick(e, product._id)}
+                onClick={(e) => handleUploadClick(e, product.product_id)}
               />
               <Button
                 icon={clear}
@@ -208,12 +212,12 @@ const InventoryPage = () => {
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
             {products.map((product, i) => (
               <ProductCard
-                key={product.product_id}
+                key={i}
                 title={product.product_name}
-                image={product.imgUrl}
+                image={product.image_url}
                 price={product.price}
                 category={product.category}
-                options
+                options={true}
                 onClickDelete={() => handleDeleteClick(product.product_id)}
                 onClick={() => {
                   setProduct(product);

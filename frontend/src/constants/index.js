@@ -36,6 +36,31 @@ export const NavbarItems = [
   },
 ];
 
+export const discountCodes = [
+  {
+    code: "SAVE10",
+    amount: 10,
+  },
+  {
+    code: "SAVE20",
+    amount: 20,
+  },
+  {
+    code: "SAVE30",
+    amount: 30,
+  },
+  {
+    code: "SAVE40",
+    amount: 40,
+  },
+  {
+    code: "SAVE50",
+    amount: 50,
+  },
+];
+
+console.log(discountCodes);
+
 export const CustomerTableColumns = [
   "CID",
   "Name",
