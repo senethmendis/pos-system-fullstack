@@ -6,7 +6,7 @@ const customerSchema = new Schema({
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  phone: { type: String },
+  phone: { type: String, required: true },
   address: { type: String },
   registration_date: { type: Date, default: Date.now },
 });
