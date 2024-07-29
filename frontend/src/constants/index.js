@@ -59,8 +59,6 @@ export const discountCodes = [
   },
 ];
 
-console.log(discountCodes);
-
 export const CustomerTableColumns = [
   "CID",
   "Name",

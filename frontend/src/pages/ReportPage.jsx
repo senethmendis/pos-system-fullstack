@@ -19,7 +19,6 @@ const ReportPage = () => {
     fetchData();
   }, []);
 
-  console.log(salesDetails);
   return (
     <section className="w-full h-full flex flex-col bg-parimary-gray px-5">
       <h1 className="my-5 font-semibold text-2xl">Genarate Report</h1>
