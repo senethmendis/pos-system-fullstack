@@ -4,19 +4,22 @@ import CustomInputField from "../components/CustomInputField";
 import axios from "axios";
 import Button from "../components/Button";
 import { clear, plus, refresh } from "../assets";
+import { subFilters, Unites } from "../constants/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CustomSelectField from "../components/CustomSelectField";
 
 const InventoryPage = () => {
   const [products, setProducts] = useState([]);
+
   const [product, setProduct] = useState({
     product_name: "",
-    category: "", // Corrected spelling
-    price: 0,
-    imgUrl: "",
+    category: "",
+    price: 0.0,
     unit: "",
     stock_quantity: 0,
     product_code: "",
+    image_url: "",
   });
 
   const notify = (text) => toast(text);
@@ -24,7 +27,7 @@ const InventoryPage = () => {
   //fetch all products
   const fetchAllProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/product");
+      const res = await axios.get("http://localhost:8080/products");
       setProducts(res.data);
     } catch (error) {
       console.log(error.message);
@@ -40,7 +43,7 @@ const InventoryPage = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8080/product", product);
+      await axios.post("http://localhost:8080/products", product);
       notify("New Product Added!");
       fetchAllProducts();
     } catch (error) {
@@ -48,39 +51,46 @@ const InventoryPage = () => {
     }
   };
 
-  const claearProduct = () => {
+  //https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/01/Baked-Salmon-1-2.jpg
+
+  const clearProduct = () => {
     setProduct({
       product_name: "",
-      category: "", // Corrected spelling
+      category: "",
       price: 0,
-      imgUrl: "",
       unit: "",
       stock_quantity: 0,
       product_code: "",
+      image_url: "",
     });
   };
 
   // const handleUpdateChange = (e) => {
   //   setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   // };
+
   //get update details for the backend
-  // const handleUploadClick = async (id) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.put("http://localhost:8080/product/" + id, product);
-  //     notify("Product Updated!");
-  //   } catch (error) {
-  //     notify("Error updating product");
-  //   }
-  // };
+
+  const handleUploadClick = async (e, id) => {
+    console.log(id);
+    e.preventDefault();
+    try {
+      await axios.put(`http://localhost:8080/products/${id}`, product);
+      notify("Product Updated!");
+      fetchAllProducts();
+    } catch (error) {
+      notify("Error updating product");
+    }
+  };
 
   //handle delete request
   const handleDeleteClick = async (id) => {
+    console.log(id);
     try {
-      await axios.delete(`http://localhost:8080/product/${id}`);
+      await axios.delete(`http://localhost:8080/products/${id}`);
       notify("Product Deleted!");
       fetchAllProducts();
-      //window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.log(error);
       notify("Error deleting product");
@@ -89,7 +99,7 @@ const InventoryPage = () => {
 
   useEffect(() => {
     fetchAllProducts();
-  }, [product]);
+  }, []);
 
   return (
     <section className="w-full h-full flex flex-col bg-parimary-gray">
@@ -108,15 +118,24 @@ const InventoryPage = () => {
               onChange={handleChange}
               value={product.product_name}
             />
-            <CustomInputField
+            <CustomSelectField
+              isRequired={true}
               lableText="Category"
-              inputType="text"
               inputId="category"
               name="category"
-              placeholder="example category"
-              isRequired={true}
-              onChange={handleChange}
               value={product.category}
+              onChange={handleChange}
+              itemArry={subFilters}
+              isCapitalize
+            />
+            <CustomSelectField
+              isRequired={true}
+              lableText="Unit"
+              inputId="unit"
+              name="unit"
+              itemArry={Unites}
+              value={product.unit}
+              onChange={handleChange}
             />
             <CustomInputField
               lableText="Price"
@@ -129,16 +148,6 @@ const InventoryPage = () => {
               value={product.price}
             />
             <CustomInputField
-              lableText="Unit"
-              inputType="text"
-              inputId="unit"
-              name="unit"
-              placeholder="KG / g / L / ml "
-              isRequired={true}
-              onChange={handleChange}
-              value={product.unit}
-            />
-            <CustomInputField
               lableText="Image Link"
               inputType="text"
               inputId="link"
@@ -146,9 +155,8 @@ const InventoryPage = () => {
               placeholder="https://example.com/productA.jpg"
               isRequired={true}
               onChange={handleChange}
-              value={product.imgUrl}
+              value={product.image_url}
             />
-
             <CustomInputField
               lableText="Quantity"
               inputType="number"
@@ -186,6 +194,7 @@ const InventoryPage = () => {
                 width="w-full"
                 invertIcon
                 customSytles="bg-orange-400 text-white font-semibold"
+                onClick={(e) => handleUploadClick(e, product.product_id)}
               />
               <Button
                 icon={clear}
@@ -194,21 +203,22 @@ const InventoryPage = () => {
                 width="w-full"
                 invertIcon
                 customSytles="bg-red-400 text-white font-semibold"
-                onClick={claearProduct}
+                onClick={clearProduct}
               />
             </div>
           </form>
         </div>
         <div className="w-full p-3">
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
-            {products.map((product) => (
+            {products.map((product, i) => (
               <ProductCard
-                key={product._id}
+                key={i}
                 title={product.product_name}
-                image={product.imgUrl}
+                image={product.image_url}
                 price={product.price}
-                options
-                onClickDelete={() => handleDeleteClick(product._id)}
+                category={product.category}
+                options={true}
+                onClickDelete={() => handleDeleteClick(product.product_id)}
                 onClick={() => {
                   setProduct(product);
                 }}

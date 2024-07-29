@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import { Customer, Sale, Product, Inventory, Report } from "./model/model.js"; // Ensure .js extension and named imports
-import e from "express";
 
 dotenv.config();
 
@@ -40,7 +39,7 @@ app.get("/test", (req, res) => {
 
 //------------------------------------------------------------------------------------------------------
 
-// Get all customers
+// Get all dashdata
 app.get("/dash", async (req, res) => {
   try {
     res.json("Dashboard Data ? ");
@@ -48,6 +47,8 @@ app.get("/dash", async (req, res) => {
     res.status(500).json({ message: "Error retrieving customers", error });
   }
 });
+
+//------------------------------------------------------------------------------------------------------
 
 // Get all customers
 app.get("/customers", async (req, res) => {
