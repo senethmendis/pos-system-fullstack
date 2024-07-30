@@ -1,4 +1,4 @@
-
+USE DATABASE 
 -- Create the customers table
 CREATE TABLE `customers` (
   `customer_id` int NOT NULL AUTO_INCREMENT,
@@ -10,6 +10,20 @@ CREATE TABLE `customers` (
   `registration_date` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`customer_id`)
 );
+
+INSERT INTO customers (first_name, last_name, email, phone, address) 
+VALUES 
+('John', 'Doe', 'john.doe@example.com', '123-456-7890', '123 Main St, Anytown, USA'),
+('Jane', 'Smith', 'jane.smith@example.com', '234-567-8901', '456 Oak St, Othertown, USA'),
+('Alice', 'Johnson', 'alice.johnson@example.com', '345-678-9012', '789 Pine St, Elsewhere, USA'),
+('Bob', 'Brown', 'bob.brown@example.com', '456-789-0123', '321 Elm St, Anytown, USA'),
+('Charlie', 'Davis', 'charlie.davis@example.com', '567-890-1234', '654 Maple St, Othertown, USA'),
+('Diana', 'Evans', 'diana.evans@example.com', '678-901-2345', '987 Birch St, Elsewhere, USA'),
+('Edward', 'Frank', 'edward.frank@example.com', '789-012-3456', '123 Cedar St, Anytown, USA'),
+('Fiona', 'Green', 'fiona.green@example.com', '890-123-4567', '456 Spruce St, Othertown, USA'),
+('George', 'Hill', 'george.hill@example.com', '901-234-5678', '789 Redwood St, Elsewhere, USA'),
+('Hannah', 'Ivy', 'hannah.ivy@example.com', '012-345-6789', '321 Willow St, Anytown, USA');
+
 
 -- Create the products table
 CREATE TABLE `products` (

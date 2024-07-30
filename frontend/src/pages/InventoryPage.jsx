@@ -24,7 +24,6 @@ const InventoryPage = () => {
 
   const notify = (text) => toast(text);
 
-  //fetch all products
   const fetchAllProducts = async () => {
     try {
       const res = await axios.get("http://localhost:8080/products");
@@ -34,12 +33,14 @@ const InventoryPage = () => {
     }
   };
 
-  //handle input fields
   const handleChange = (e) => {
-    setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setProduct((prev) => ({
+      ...prev,
+      [name]: value !== undefined ? value : "",
+    }));
   };
 
-  //post request add new products
   const handleClick = async (e) => {
     e.preventDefault();
     try {
@@ -50,8 +51,6 @@ const InventoryPage = () => {
       console.log(error);
     }
   };
-
-  //https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2021/01/Baked-Salmon-1-2.jpg
 
   const clearProduct = () => {
     setProduct({
@@ -65,14 +64,7 @@ const InventoryPage = () => {
     });
   };
 
-  // const handleUpdateChange = (e) => {
-  //   setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  // };
-
-  //get update details for the backend
-
   const handleUploadClick = async (e, id) => {
-    console.log(id);
     e.preventDefault();
     try {
       await axios.put(`http://localhost:8080/products/${id}`, product);
@@ -83,14 +75,11 @@ const InventoryPage = () => {
     }
   };
 
-  //handle delete request
   const handleDeleteClick = async (id) => {
-    console.log(id);
     try {
       await axios.delete(`http://localhost:8080/products/${id}`);
       notify("Product Deleted!");
       fetchAllProducts();
-      // window.location.reload();
     } catch (error) {
       console.log(error);
       notify("Error deleting product");
@@ -103,11 +92,11 @@ const InventoryPage = () => {
 
   return (
     <section className="w-full h-full flex flex-col bg-parimary-gray">
-      <ToastContainer newestOnTop closeOnClick />
+      <ToastContainer newestOnTop closeOnClick theme="dark" />
       <h1 className="my-5 mx-5 font-semibold text-2xl">InventoryPage</h1>
       <div className="w-full h-[700px] flex flex-row">
         <div className="w-1/2 h-full bg-white mx-3 rounded-lg">
-          <form className="max-w-sm mx-auto  px-5 py-3">
+          <form className="max-w-sm mx-auto px-5 py-3">
             <CustomInputField
               lableText="Product Name"
               inputType="text"
@@ -116,14 +105,14 @@ const InventoryPage = () => {
               placeholder="example product"
               isRequired={true}
               onChange={handleChange}
-              value={product.product_name}
+              value={product.product_name || ""}
             />
             <CustomSelectField
               isRequired={true}
               lableText="Category"
               inputId="category"
               name="category"
-              value={product.category}
+              value={product.category || ""}
               onChange={handleChange}
               itemArry={subFilters}
               isCapitalize
@@ -134,7 +123,7 @@ const InventoryPage = () => {
               inputId="unit"
               name="unit"
               itemArry={Unites}
-              value={product.unit}
+              value={product.unit || ""}
               onChange={handleChange}
             />
             <CustomInputField
@@ -145,17 +134,17 @@ const InventoryPage = () => {
               placeholder="0.00"
               isRequired={true}
               onChange={handleChange}
-              value={product.price}
+              value={product.price || 0}
             />
             <CustomInputField
               lableText="Image Link"
               inputType="text"
               inputId="link"
-              name="imgUrl"
+              name="image_url"
               placeholder="https://example.com/productA.jpg"
               isRequired={true}
               onChange={handleChange}
-              value={product.image_url}
+              value={product.image_url || ""}
             />
             <CustomInputField
               lableText="Quantity"
@@ -165,7 +154,7 @@ const InventoryPage = () => {
               placeholder="10"
               onChange={handleChange}
               isRequired={true}
-              value={product.stock_quantity}
+              value={product.stock_quantity || 0}
             />
             <CustomInputField
               lableText="Product Code"
@@ -175,7 +164,7 @@ const InventoryPage = () => {
               placeholder="P001"
               onChange={handleChange}
               isRequired={true}
-              value={product.product_code}
+              value={product.product_code || ""}
             />
             <div className="w-full flex flex-row gap-4">
               <Button
