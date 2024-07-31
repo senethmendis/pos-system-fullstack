@@ -136,7 +136,7 @@ app.delete("/products/:id", (req, res) => {
 app.put("/products/:id", (req, res) => {
   const productId = req.params.id;
   const query =
-    "UPDATE products SET product_name = ?, category = ?, price = ?, unit = ?,stock_quantity= ?,image_url= ?";
+    "UPDATE products SET product_name = ?, category = ?, price = ?, unit = ?,stock_quantity= ?,image_url= ? WHERE product_id = ?";
   const values = [
     req.body.product_name,
     req.body.category,
