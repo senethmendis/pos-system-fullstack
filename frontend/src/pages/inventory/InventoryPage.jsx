@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import ProductCard from "../components/ProductCard";
-import CustomInputField from "../components/CustomInputField";
+import ProductCard from "../../components/ProductCard";
+import CustomInputField from "../../components/common/CustomInputField";
 import axios from "axios";
-import Button from "../components/Button";
-import { clear, plus, refresh } from "../assets";
-import { subFilters, Unites } from "../constants/index";
+import Button from "../../components/common/Button";
+import { clear, plus, refresh } from "../../assets";
+import { subFilters, Unites } from "../../constants/index";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CustomSelectField from "../components/CustomSelectField";
+import CustomSelectField from "../../components/common/CustomSelectField";
 
 const InventoryPage = () => {
   const [products, setProducts] = useState([]);

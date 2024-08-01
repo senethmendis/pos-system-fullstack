@@ -1,4 +1,4 @@
-import { cancel } from "../assets";
+import { cancel } from "../../../assets";
 
 const CartItemRow = ({ title, price, id, count, onClickRemove }) => {
   return (
