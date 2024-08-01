@@ -76,7 +76,7 @@ const Dashboard = () => {
       </div>
 
       <div className="w-full flex flex-row gap-8 items-center">
-        <div className="w-1/2 h-96">
+        <div className="w-1/2 h-94">
           {/* Line Chart */}
           <div className="mb-6 h-full">
             <div className="bg-white shadow rounded-lg p-4 h-full">
@@ -86,42 +86,17 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Pie Chart */}
-        <div className="w-1/2 h-96">
-          <div className="mb-6 h-full">
-            <div className="bg-white shadow rounded-lg p-4 h-full">
-              <h3 className="text-lg font-bold mb-4">Traffic Sources</h3>
-              <Pie data={pieData} />
+          <div className="w-full md:w-1/2 lg:w-1/3 h-auto ">
+            <div className="mb-6 h-full">
+              <div className="bg-white shadow rounded-lg p-4 h-full">
+                <h3 className="text-lg font-bold mb-4">Traffic Sources</h3>
+                <Pie data={pieData} className="w-full h-full"/>
+              </div>
             </div>
           </div>
-        </div>
+
       </div>
 
-      {/* Recent Activities */}
-      <div className="bg-white shadow rounded-lg p-4 mb-6">
-        <h3 className="text-lg font-bold mb-4">Recent Activities</h3>
-        <ul>
-          <li className="mb-2">
-            <p className="text-gray-500">42 mins ago</p>
-            <p className="text-black">Task Updated by Nikolai</p>
-          </li>
-          <li className="mb-2">
-            <p className="text-gray-500">1 day ago</p>
-            <p className="text-black">Deal Added by Panshi</p>
-          </li>
-          <li className="mb-2">
-            <p className="text-gray-500">1 day ago</p>
-            <p className="text-black">Published Article by Rasel</p>
-          </li>
-          <li className="mb-2">
-            <p className="text-gray-500">1 day ago</p>
-            <p className="text-black">Dock Updated by Reshmi</p>
-          </li>
-          <li className="mb-2">
-            <p className="text-gray-500">1 day ago</p>
-            <p className="text-black">Replied Comment by Jenathon</p>
-          </li>
-        </ul>
-      </div>
 
       {/* Order Status */}
       <div className="bg-white shadow rounded-lg p-4">
