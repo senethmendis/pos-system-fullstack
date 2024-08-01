@@ -5,6 +5,7 @@ import {
   reporticon,
   stock,
   dashboard,
+  cart,
 } from "../assets/index";
 
 export const NavbarItems = [
@@ -33,6 +34,107 @@ export const NavbarItems = [
     link: "/reports",
     icon: reporticon,
     title: "Report",
+  },
+  {
+    link: "/orders",
+    icon: cart,
+    title: "Orders",
+  },
+];
+
+export const OrdersData = [
+  {
+    customerId: "001",
+    customerName: "Alice Smith",
+    status: "Delivered",
+    dateTime: "2024-07-30T10:15:00Z",
+    products: [
+      {
+        productId: "P001",
+        productName: "Laptop",
+        price: 899.99,
+        quantity: 1,
+      },
+      {
+        productId: "P002",
+        productName: "Wireless Mouse",
+        price: 29.99,
+        quantity: 2,
+      },
+    ],
+    total: 959.97,
+  },
+  {
+    customerId: "002",
+    customerName: "Bob Johnson",
+    status: "Processing",
+    dateTime: "2024-07-30T12:00:00Z",
+    products: [
+      {
+        productId: "P003",
+        productName: "Keyboard",
+        price: 49.99,
+        quantity: 1,
+      },
+    ],
+    total: 49.99,
+  },
+  {
+    customerId: "003",
+    customerName: "Charlie Brown",
+    status: "Cancelled",
+    dateTime: "2024-07-29T14:45:00Z",
+    products: [
+      {
+        productId: "P004",
+        productName: "Monitor",
+        price: 199.99,
+        quantity: 1,
+      },
+      {
+        productId: "P005",
+        productName: "HDMI Cable",
+        price: 15.99,
+        quantity: 3,
+      },
+    ],
+    total: 247.96,
+  },
+  {
+    customerId: "004",
+    customerName: "Diana Prince",
+    status: "Shipped",
+    dateTime: "2024-07-31T08:30:00Z",
+    products: [
+      {
+        productId: "P006",
+        productName: "Tablet",
+        price: 329.99,
+        quantity: 1,
+      },
+    ],
+    total: 329.99,
+  },
+  {
+    customerId: "005",
+    customerName: "Ethan Hunt",
+    status: "Delivered",
+    dateTime: "2024-07-31T11:00:00Z",
+    products: [
+      {
+        productId: "P007",
+        productName: "Smartphone",
+        price: 599.99,
+        quantity: 1,
+      },
+      {
+        productId: "P008",
+        productName: "Phone Case",
+        price: 19.99,
+        quantity: 1,
+      },
+    ],
+    total: 619.98,
   },
 ];
 
