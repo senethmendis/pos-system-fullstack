@@ -1,6 +1,5 @@
 import React from "react";
 import { OrdersData } from "../constants";
-import Button from "../components/Button";
 import OrderCard from "../components/OrderCard";
 
 const OrdersPage = () => {
