@@ -1,5 +1,5 @@
-import Button from "./Button";
-import { dashboard, search } from "../assets/index";
+import Button from "../common/Button";
+import { dashboard, search } from "../../assets/index";
 import { Link } from "react-router-dom";
 
 const HeaderBar = () => {

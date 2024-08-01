@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import OrdersPage from "./pages/OrdersPage";
+import OrdersPage from "./pages/order/OrdersPage";
 import Layout from "./pages/layout/Layout";
-import CustomerPage from "./pages/CustomerPage";
+import CustomerPage from "./pages/customer/CustomerPage";
 import SalesPage from "./pages/SalesPage";
 import ReportPage from "./pages/ReportPage";
-import HomePage from "./pages/HomePage";
-import InventoryPage from "./pages/InventoryPage";
-import Dashboard from "./pages/Dashboard";
+import HomePage from "./pages/home/HomePage";
+import InventoryPage from "./pages/inventory/InventoryPage";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (

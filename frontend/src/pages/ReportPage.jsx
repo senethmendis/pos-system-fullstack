@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Button from "../components/Button";
+import Button from "../components/common/Button";
 import { reporticon } from "../assets";
 
 const ReportPage = () => {
