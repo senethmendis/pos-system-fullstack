@@ -1,6 +1,6 @@
 import React from "react";
-import { OrdersData } from "../constants";
-import OrderCard from "../components/OrderCard";
+import { OrdersData } from "../../constants";
+import OrderCard from "./components/OrderCard";
 
 const OrdersPage = () => {
   return (

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { subFilters } from "../constants";
-import ProductCard from "../components/ProductCard";
-import Button from "../components/Button";
-import { plus, reporticon } from "../assets";
-import CartItemRow from "../components/CartItemRow";
+import { subFilters } from "../../constants/index";
+import ProductCard from "../../components/ProductCard";
+import Button from "../../components/common/Button";
+import { plus, reporticon } from "../../assets";
+import CartItemRow from "./components/CartItemRow";
 import axios from "axios";
 
 const DummySalesRow = [];

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import Button from "../../../components/common/Button";
 
 const OrderCard = ({ customerName, status, dateTime, total, children }) => {
   return (

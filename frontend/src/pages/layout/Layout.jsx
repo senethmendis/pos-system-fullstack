@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import HeaderBar from "../../components/HeaderBar";
-import Navbar from "../../components/Navbar";
+import HeaderBar from "../../components/common/HeaderBar";
+import Navbar from "../../components/common/Navbar";
 
 const Layout = () => {
   return (
