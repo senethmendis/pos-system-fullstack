@@ -9,10 +9,12 @@ const user = process.env.USER;
 const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
 const port = process.env.PORT || 8080;
+const dbPort = process.env.DBPORT || 3308;
 
 const db = mysql.createConnection({
   host: host,
   user: user,
+  port: dbPort,
   password: password,
   database: database,
 });
