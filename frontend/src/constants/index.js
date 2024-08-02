@@ -161,6 +161,8 @@ export const dashboardCardItems = [
   },
 ];
 
+export const recentSalesDash = [];
+
 export const discountCodes = [
   {
     code: "SAVE10",
