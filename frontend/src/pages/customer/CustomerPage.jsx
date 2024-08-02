@@ -3,16 +3,15 @@ import axios from "axios";
 
 const CustomerPage = () => {
   const [customers, setCustomers] = useState([]);
-
+  const fetchAllCustomers = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/customers");
+      setCustomers(res.data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   useEffect(() => {
-    const fetchAllCustomers = async () => {
-      try {
-        const res = await axios.get("http://localhost:8080/customers");
-        setCustomers(res.data);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
     fetchAllCustomers();
   }, []);
 

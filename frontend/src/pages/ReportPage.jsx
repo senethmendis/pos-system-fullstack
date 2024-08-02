@@ -7,15 +7,15 @@ const ReportPage = () => {
   const [salesDetails, setSalesDetails] = useState([]);
   // const [filter, SetFilter] = useState("All");
 
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/sales");
+      setSalesDetails(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("http://localhost:8080/sales");
-        setSalesDetails(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchData();
   }, []);
 
