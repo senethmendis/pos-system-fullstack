@@ -1,5 +1,4 @@
-import React from "react";
-import { NavbarItems } from "../constants";
+import { NavbarItems } from "../../constants";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

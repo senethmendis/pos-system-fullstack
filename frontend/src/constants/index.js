@@ -1,21 +1,12 @@
-import { homeicon, usericon, salesicon, reporticon } from "../assets/index";
 import {
-  apple,
-  banana,
-  bread,
-  butter,
-  carrots,
-  cheese,
-  chicken,
-  eggs,
-  milk,
-  oranges,
-  pasta,
-  potatoes,
-  rice,
-  spinach,
-  tomato,
-} from "../assets/products/index";
+  homeicon,
+  usericon,
+  salesicon,
+  reporticon,
+  stock,
+  dashboard,
+  cart,
+} from "../assets/index";
 
 export const NavbarItems = [
   {
@@ -23,6 +14,7 @@ export const NavbarItems = [
     icon: homeicon,
     title: "Home",
   },
+
   {
     link: "/customer",
     icon: usericon,
@@ -34,9 +26,163 @@ export const NavbarItems = [
     title: "Sales",
   },
   {
+    link: "/inventory",
+    icon: stock,
+    title: "Inventory",
+  },
+  {
     link: "/reports",
     icon: reporticon,
     title: "Report",
+  },
+  {
+    link: "/orders",
+    icon: cart,
+    title: "Orders",
+  },
+];
+
+export const OrdersData = [
+  {
+    customerId: "001",
+    customerName: "Alice Smith",
+    status: "Delivered",
+    dateTime: "2024-07-30T10:15:00Z",
+    products: [
+      {
+        productId: "P001",
+        productName: "Laptop",
+        price: 899.99,
+        quantity: 1,
+      },
+      {
+        productId: "P002",
+        productName: "Wireless Mouse",
+        price: 29.99,
+        quantity: 2,
+      },
+    ],
+    total: 959.97,
+  },
+  {
+    customerId: "002",
+    customerName: "Bob Johnson",
+    status: "Processing",
+    dateTime: "2024-07-30T12:00:00Z",
+    products: [
+      {
+        productId: "P003",
+        productName: "Keyboard",
+        price: 49.99,
+        quantity: 1,
+      },
+    ],
+    total: 49.99,
+  },
+  {
+    customerId: "003",
+    customerName: "Charlie Brown",
+    status: "Cancelled",
+    dateTime: "2024-07-29T14:45:00Z",
+    products: [
+      {
+        productId: "P004",
+        productName: "Monitor",
+        price: 199.99,
+        quantity: 1,
+      },
+      {
+        productId: "P005",
+        productName: "HDMI Cable",
+        price: 15.99,
+        quantity: 3,
+      },
+    ],
+    total: 247.96,
+  },
+  {
+    customerId: "004",
+    customerName: "Diana Prince",
+    status: "Shipped",
+    dateTime: "2024-07-31T08:30:00Z",
+    products: [
+      {
+        productId: "P006",
+        productName: "Tablet",
+        price: 329.99,
+        quantity: 1,
+      },
+    ],
+    total: 329.99,
+  },
+  {
+    customerId: "005",
+    customerName: "Ethan Hunt",
+    status: "Delivered",
+    dateTime: "2024-07-31T11:00:00Z",
+    products: [
+      {
+        productId: "P007",
+        productName: "Smartphone",
+        price: 599.99,
+        quantity: 1,
+      },
+      {
+        productId: "P008",
+        productName: "Phone Case",
+        price: 19.99,
+        quantity: 1,
+      },
+    ],
+    total: 619.98,
+  },
+];
+
+export const dashboardCardItems = [
+  {
+    title: "Total Revenue",
+    total_revenue: "$45,567",
+    period: "last month",
+  },
+  {
+    title: "Total Expenses",
+    total_revenue: "$30,123",
+    period: "last month",
+  },
+  {
+    title: "Net Profit",
+    total_revenue: "$15,444",
+    period: "last month",
+  },
+  {
+    title: "Total Revenue",
+    total_revenue: "$50,678",
+    period: "this month",
+  },
+];
+
+export const recentSalesDash = [];
+
+export const discountCodes = [
+  {
+    code: "SAVE10",
+    amount: 10,
+  },
+  {
+    code: "SAVE20",
+    amount: 20,
+  },
+  {
+    code: "SAVE30",
+    amount: 30,
+  },
+  {
+    code: "SAVE40",
+    amount: 40,
+  },
+  {
+    code: "SAVE50",
+    amount: 50,
   },
 ];
 
@@ -50,13 +196,15 @@ export const CustomerTableColumns = [
 ];
 
 export const subFilters = [
-  "all",
-  "vegies",
-  "fruites",
-  "dairy",
-  "meat",
-  "other",
+  "All",
+  "Vegetables",
+  "Fruits",
+  "Dairy",
+  "Meat",
+  "Seafood",
+  "Bakery",
 ];
+export const Unites = ["KG", "ml", "g", "loaf"];
 
 export const DummySalesRow = [
   {
@@ -73,114 +221,6 @@ export const DummySalesRow = [
     productId: 3,
     productName: "Product 3",
     Price: "350",
-  },
-];
-
-export const DummyProductData = [
-  {
-    id: 1,
-    title: "Eggs",
-    price: 50,
-    image: eggs,
-    category: "dairy",
-  },
-  {
-    id: 2,
-    title: "Milk",
-    price: 30,
-    image: milk,
-    category: "dairy",
-  },
-  {
-    id: 3,
-    title: "Bread",
-    price: 20,
-    image: bread,
-    category: "other",
-  },
-  {
-    id: 4,
-    title: "Butter",
-    price: 45,
-    image: butter,
-    category: "dairy",
-  },
-  {
-    id: 5,
-    title: "Cheese",
-    price: 60,
-    image: cheese,
-    category: "dairy",
-  },
-  {
-    id: 6,
-    title: "Apples",
-    price: 35,
-    image: apple,
-    category: "fruites",
-  },
-  {
-    id: 7,
-    title: "Oranges",
-    price: 40,
-    image: oranges,
-    category: "fruites",
-  },
-  {
-    id: 8,
-    title: "Chicken",
-    price: 150,
-    image: chicken,
-    category: "meat",
-  },
-  {
-    id: 9,
-    title: "Rice",
-    price: 25,
-    image: rice,
-    category: "other",
-  },
-  {
-    id: 10,
-    title: "Pasta",
-    price: 28,
-    image: pasta,
-    category: "other",
-  },
-  {
-    id: 11,
-    title: "Bananas",
-    price: 20,
-    image: banana,
-    category: "fruites",
-  },
-  {
-    id: 12,
-    title: "Tomatoes",
-    price: 22,
-    image: tomato,
-    category: "vegies",
-  },
-  {
-    id: 13,
-    title: "Potatoes",
-    price: 15,
-    image: potatoes,
-    category: "vegies",
-  },
-  {
-    id: 14,
-    title: "Carrots",
-    price: 18,
-    image: carrots,
-    category: "vegies",
-  },
-  {
-    id: 15,
-    title: "Spinach",
-    price: 25,
-    image: spinach,
-    category: "vegies",
   },
 ];
 

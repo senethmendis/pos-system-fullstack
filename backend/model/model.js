@@ -6,7 +6,7 @@ const customerSchema = new Schema({
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
-  phone: { type: String },
+  phone: { type: String, required: true },
   address: { type: String },
   registration_date: { type: Date, default: Date.now },
 });
@@ -27,7 +27,9 @@ const productSchema = new Schema({
   category: { type: String },
   price: { type: Number, required: true },
   unit: { type: String },
+  imgUrl: { type: String },
   stock_quantity: { type: Number, default: 0 },
+  product_code: { type: String, required: true },
 });
 
 // Inventory schema
@@ -54,10 +56,4 @@ const Product = mongoose.model("Product", productSchema);
 const Inventory = mongoose.model("Inventory", inventorySchema);
 const Report = mongoose.model("Report", reportSchema);
 
-module.exports = {
-  Customer,
-  Sale,
-  Product,
-  Inventory,
-  Report,
-};
+export { Customer, Sale, Product, Inventory, Report };

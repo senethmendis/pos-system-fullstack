@@ -1,10 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import OrdersPage from "./pages/OrdersPage";
+import OrdersPage from "./pages/order/OrdersPage";
 import Layout from "./pages/layout/Layout";
-import CustomerPage from "./pages/CustomerPage";
+import CustomerPage from "./pages/customer/CustomerPage";
 import SalesPage from "./pages/SalesPage";
 import ReportPage from "./pages/ReportPage";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/home/HomePage";
+import InventoryPage from "./pages/inventory/InventoryPage";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 function App() {
   return (
@@ -12,9 +14,11 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" index element={<HomePage />} />
+          <Route path="/dash" element={<Dashboard />} />
           <Route path="/orders" element={<OrdersPage />} />
           <Route path="/customer" element={<CustomerPage />} />
           <Route path="/sales" element={<SalesPage />} />
+          <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/reports" element={<ReportPage />} />
         </Route>
       </Routes>
