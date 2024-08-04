@@ -10,6 +10,7 @@ const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
 const port = process.env.PORT || 8080;
 const dbPort = process.env.DBPORT || 3308;
+const socketPath = process.env.SOCKETPATH;
 
 const db = mysql.createConnection({
   host: host,
@@ -17,6 +18,7 @@ const db = mysql.createConnection({
   port: dbPort,
   password: password,
   database: database,
+  socketPath: socketPath,
 });
 
 db.connect((err) => {
