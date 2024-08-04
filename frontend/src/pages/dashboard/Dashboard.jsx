@@ -64,9 +64,9 @@ const Dashboard = () => {
 
   return (
     <section className="p-4 w-full h-[700px]">
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex items-center justify-between mb-5">
         <h1 className="text-3xl font-semibold">Dashboard</h1>
-        <div className="flex flex-row items-center">
+        <div className="flex items-center">
           <CustomInputField
             inputId={"datePicker"}
             name={"datePicker"}
