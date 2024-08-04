@@ -5,9 +5,24 @@ const OrderCard = ({ customerName, status, dateTime, total, children }) => {
   return (
     <div className="flex flex-col justify-between w-full h-[350px] bg-white p-2 rounded-md">
       <div className="w-full">
-        <div className="w-full flex flex-row justify-between">
-          <h2 className="text-lg font-bold">{customerName}</h2>
-          <p className="text-lg font-bold">{status}</p>
+        <div className="w-full flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center gap-4">
+            <img
+              src="https://i.pravatar.cc/150?img=1"
+              alt="img"
+              className="w-14 h-14 rounded-full"
+            />
+            <h2 className="text-lg font-bold">{customerName}</h2>
+          </div>
+          <p
+            className={`text-lg font-bold bg-gray-300 px-2 rounded-sm ${
+              status == "Shipped" && "text-blue-600"
+            }  ${status == "Cancelled" && "text-red-600"}  ${
+              status == "Processing" && "text-orange-400"
+            } ${status == "Delivered" && "text-primary-light-green"}`}
+          >
+            {status}
+          </p>
         </div>
         <p className="text-lg font-bold">{dateTime}</p>
         <hr />
