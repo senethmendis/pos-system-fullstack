@@ -1,4 +1,5 @@
 import React from "react";
+import SlotCounter from "react-slot-counter";
 
 const DashCard = ({ title, amount, period }) => {
   return (
@@ -7,7 +8,9 @@ const DashCard = ({ title, amount, period }) => {
         <h2>{title}</h2>
         <p>$</p>
       </div>
-      <h1 className="font-bold text-3xl">{amount}</h1>
+      <h1 className="font-bold text-3xl">
+        <SlotCounter value={amount} />
+      </h1>
       <p>{period}</p>
     </div>
   );

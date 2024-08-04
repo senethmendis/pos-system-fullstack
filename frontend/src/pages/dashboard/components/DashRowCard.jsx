@@ -1,4 +1,5 @@
 import React from "react";
+import SlotCounter from "react-slot-counter";
 
 const DashRowCard = ({ img, name, email, amount }) => {
   return (
@@ -10,7 +11,9 @@ const DashRowCard = ({ img, name, email, amount }) => {
           <p className="text-gray-600">{email}</p>
         </div>
       </div>
-      <h2>{amount}</h2>
+      <h2>
+        <SlotCounter value={amount} />
+      </h2>
     </div>
   );
 };
