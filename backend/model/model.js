@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const customerSchema = new Schema({
   first_name: { type: String, required: true },
   last_name: { type: String, required: true },
+  cust_img_link: { type: String },
   email: { type: String, required: true, unique: true },
   phone: { type: String, required: true },
   address: { type: String },

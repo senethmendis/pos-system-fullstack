@@ -10,6 +10,7 @@ const password = process.env.PASSWORD;
 const database = process.env.DATABASE;
 const port = process.env.PORT || 8080;
 const dbPort = process.env.DBPORT || 3308;
+const socketPath = process.env.SOCKETPATH;
 
 const db = mysql.createConnection({
   host: host,
@@ -17,6 +18,7 @@ const db = mysql.createConnection({
   port: dbPort,
   password: password,
   database: database,
+  socketPath: socketPath,
 });
 
 db.connect((err) => {
@@ -45,6 +47,62 @@ app.get("/customers", (req, res) => {
     }
     //console.table(data);
     return res.json(data);
+  });
+});
+
+//ADD NEW CUSTOMER
+app.post("/customers", (req, res) => {
+  const query =
+    "INSERT INTO customers (`first_name`, `last_name`, `email`, `phone`,`address`,`cust_img_link`) VALUES (?)";
+  const values = [
+    req.body.first_name,
+    req.body.last_name,
+    req.body.email,
+    req.body.phone,
+    req.body.address,
+    req.body.cust_img_link,
+  ];
+  db.query(query, [values], (err, data) => {
+    if (err) return err;
+    return res.json("Customer Added!");
+  });
+});
+
+//DELETE CUSTOMER
+app.delete("/customers/:id", (req, res) => {
+  const productId = req.params.id;
+  const query = "DELETE FROM customers WHERE customer_id = ?";
+
+  db.query(query, [productId], (err, data) => {
+    if (err) {
+      console.error("Error deleting product:", err);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
+
+    if (data.affectedRows === 0) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    return res.status(200).json({ message: "Product Deleted!" });
+  });
+});
+
+//edit customers
+app.put("/customers/:id", (req, res) => {
+  const productId = req.params.id;
+  const query =
+    "UPDATE customers SET  first_name = ?, last_name = ?, email = ?,phone= ?,address= ?,cust_img_link= ? WHERE customer_id = ?";
+  const values = [
+    req.body.product_name,
+    req.body.category,
+    req.body.price,
+    req.body.unit,
+    req.body.stock_quantity,
+    req.body.image_url,
+  ];
+  db.query(query, [...values, productId], (err, data) => {
+    if (err) return err;
+    return res.json("Customer Updated!");
   });
 });
 
