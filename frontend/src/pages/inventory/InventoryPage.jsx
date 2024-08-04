@@ -106,6 +106,7 @@ const InventoryPage = () => {
               isRequired={true}
               onChange={handleChange}
               value={product.product_name || ""}
+              min={false}
             />
             <CustomSelectField
               isRequired={true}
@@ -116,6 +117,7 @@ const InventoryPage = () => {
               onChange={handleChange}
               itemArry={subFilters}
               isCapitalize
+              min={false}
             />
             <CustomSelectField
               isRequired={true}
@@ -125,6 +127,7 @@ const InventoryPage = () => {
               itemArry={Unites}
               value={product.unit || ""}
               onChange={handleChange}
+              min={false}
             />
             <CustomInputField
               lableText="Price"
@@ -135,6 +138,7 @@ const InventoryPage = () => {
               isRequired={true}
               onChange={handleChange}
               value={product.price || 0}
+              min={1}
             />
             <CustomInputField
               lableText="Image Link"
@@ -145,6 +149,7 @@ const InventoryPage = () => {
               isRequired={true}
               onChange={handleChange}
               value={product.image_url || ""}
+              min={false}
             />
             <CustomInputField
               lableText="Quantity"
@@ -154,7 +159,8 @@ const InventoryPage = () => {
               placeholder="10"
               onChange={handleChange}
               isRequired={true}
-              value={product.stock_quantity || 0}
+              value={product.stock_quantity || 1}
+              min={1}
             />
             <CustomInputField
               lableText="Product Code"
@@ -164,6 +170,7 @@ const InventoryPage = () => {
               placeholder="P001"
               onChange={handleChange}
               isRequired={true}
+              min={false}
               value={product.product_code || ""}
             />
             <div className="w-full flex flex-row gap-4">
