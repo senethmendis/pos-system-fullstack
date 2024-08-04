@@ -138,6 +138,31 @@ export const OrdersData = [
   },
 ];
 
+export const dashboardCardItems = [
+  {
+    title: "Total Revenue",
+    total_revenue: "$45,567",
+    period: "last month",
+  },
+  {
+    title: "Total Expenses",
+    total_revenue: "$30,123",
+    period: "last month",
+  },
+  {
+    title: "Net Profit",
+    total_revenue: "$15,444",
+    period: "last month",
+  },
+  {
+    title: "Total Revenue",
+    total_revenue: "$50,678",
+    period: "this month",
+  },
+];
+
+export const recentSalesDash = [];
+
 export const discountCodes = [
   {
     code: "SAVE10",

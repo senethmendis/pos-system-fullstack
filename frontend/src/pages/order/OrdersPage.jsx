@@ -5,7 +5,7 @@ import OrderCard from "./components/OrderCard";
 const OrdersPage = () => {
   return (
     <section className="w-full h-[680px]  flex flex-col bg-slate-100">
-      <div className="h-[650px] overflow-y-auto grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="h-[650px] overflow-y-auto grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
         {OrdersData.map((card, i) => (
           <OrderCard
             key={i}
