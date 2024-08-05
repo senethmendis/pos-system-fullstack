@@ -196,13 +196,13 @@ export const CustomerTableColumns = [
 ];
 
 export const subFilters = [
-  "All",
-  "Vegetables",
-  "Fruits",
-  "Dairy",
-  "Meat",
-  "Seafood",
-  "Bakery",
+  "all",
+  "vegetables",
+  "fruits",
+  "dairy",
+  "meat",
+  "seafood",
+  "bakery",
 ];
 export const Unites = ["KG", "ml", "g", "loaf"];
 

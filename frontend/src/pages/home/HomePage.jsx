@@ -63,7 +63,7 @@ const HomePage = () => {
           <div className="grid grid-cols-4 overflow-y-scroll overflow-x-hidden h-[648px] gap-4 px-2 no-scrollbar">
             {products
               .filter((product) => {
-                return filter.toLowerCase() === "all"
+                return filter.toLowerCase() === subFilters[0]
                   ? true
                   : product.category.toLowerCase().includes(filter);
               })
