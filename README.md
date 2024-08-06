@@ -16,42 +16,9 @@
 * ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 * ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
 
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Prerequisites
-
-This is  how to install all the necessary dependencies .
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-  ### Installation
-
-_installing and setting up your app._
-
-1. Clone the repo
-   ```sh
-   https://github.com/senethmendis/chat-app-react-firebase.git
-   ```
-2. Install NPM packages in backend and client directories
-   ```sh
-   npm install
-   ```
-3. Start servers
-   for backend
-   ```sh
-   npm start
-   ```
-   for client
-   ```sh
-   npm run dev
-   ```
-
 ![test div](my_video.mov)
-
 
 <video width="320" height="240" controls>
   <source src="video.mov" type="video/mp4">
