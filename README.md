@@ -18,9 +18,4 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-![test div](my_video.mov)
-
-<video width="320" height="240" controls>
-  <source src="video.mov" type="video/mp4">
-</video>
 
