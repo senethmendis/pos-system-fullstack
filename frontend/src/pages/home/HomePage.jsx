@@ -11,12 +11,6 @@ const DummySalesRow = [];
 //const discountcode = "SAVE50";
 
 const HomePage = () => {
-  const discountCodeIssue = (discountcode) => {
-    if (discountcode == "SAVE50") {
-      return 50;
-    }
-  };
-
   const [filter, setFilter] = useState("all");
   const [toggleDiscount, setToggleDiscount] = useState(false);
   const [sales, setSales] = useState(DummySalesRow);
@@ -24,17 +18,23 @@ const HomePage = () => {
   const [discountAmount, setDiscountAmount] = useState(0);
   const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchAllProducts = async () => {
-      try {
-        const res = await axios.get("http://localhost:8080/products");
-        setProducts(Array.isArray(res.data) ? res.data : []);
-      } catch (error) {
-        console.log(error.message);
-        setProducts([]);
-      }
-    };
+  const fetchAllProducts = async () => {
+    try {
+      const res = await axios.get("http://localhost:8080/products");
+      setProducts(Array.isArray(res.data) ? res.data : []);
+    } catch (error) {
+      console.log(error.message);
+      setProducts([]);
+    }
+  };
 
+  const discountCodeIssue = (discountcode) => {
+    if (discountcode == "SAVE50") {
+      return 50;
+    }
+  };
+
+  useEffect(() => {
     fetchAllProducts();
   }, []);
 
